@@ -94,13 +94,7 @@ export default function Navbar() {
                 )}
               </Link>
 
-              <Link
-                href="/shop"
-                id="nav-buy-now-btn"
-                className="hidden md:block bg-[#C8102E] text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-[#a50d26] transition-all hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
-              >
-                Buy Now
-              </Link>
+
 
               {/* Mobile hamburger */}
               <button
@@ -132,13 +126,7 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/shop"
-              onClick={() => setOpen(false)}
-              className="block mt-2 bg-[#C8102E] text-white py-3 px-4 rounded-lg text-center font-bold"
-            >
-              Buy Now — $29.00 CAD
-            </Link>
+
           </div>
         </div>
       </nav>

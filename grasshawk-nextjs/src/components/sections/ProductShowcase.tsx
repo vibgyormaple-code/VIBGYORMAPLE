@@ -269,13 +269,6 @@ export default function ProductShowcase() {
               {/* Premium single CTA button to Shop Page */}
               <div className="flex flex-col sm:flex-row gap-4 items-center">
                 <Link
-                  href="/shop"
-                  id="showcase-view-product"
-                  className="w-full sm:flex-1 bg-[#C8102E] text-white py-4 rounded-xl font-bold text-center flex items-center justify-center gap-2 hover:bg-[#a50d26] transition-all hover:shadow-[0_8px_24px_rgba(200,16,46,0.3)] hover:-translate-y-0.5"
-                >
-                  Buy Now — $29.00 CAD
-                </Link>
-                <Link
                   href="/about"
                   className="w-full sm:w-auto px-8 py-4 text-center rounded-xl font-bold text-sm border-2 border-gray-200 text-gray-600 hover:border-gray-800 hover:text-[#1A1A1A] transition-all"
                 >

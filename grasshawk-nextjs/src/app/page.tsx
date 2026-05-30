@@ -36,13 +36,7 @@ export default function HomePage() {
             Join thousands of Canadian homeowners and farmers who trust Grasshawk KLAW for chemical-free mole control.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/shop"
-              id="cta-banner-buy-now"
-              className="bg-[#C8102E] text-white px-10 py-4 rounded-xl font-bold text-base hover:bg-[#a50d26] transition-all hover:shadow-[0_8px_24px_rgba(200,16,46,0.4)] hover:-translate-y-0.5"
-            >
-              Buy Now — $29.00 CAD
-            </Link>
+
             <Link
               href="/contact"
               id="cta-banner-contact"

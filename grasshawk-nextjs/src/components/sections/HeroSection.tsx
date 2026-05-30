@@ -40,13 +40,7 @@ export default function HeroSection() {
           <p className="text-gray-400 text-sm mb-8">You grow it, we protect it.</p>
 
           <div className="flex flex-col gap-3">
-            <Link
-              href="/shop"
-              id="hero-buy-now-mobile"
-              className="bg-[#C8102E] text-white py-4 rounded-xl font-bold text-base text-center hover:bg-[#a50d26] transition-all active:scale-95"
-            >
-              Buy Now — $29.00 CAD
-            </Link>
+
             <Link
               href="/contact"
               className="bg-white/10 border border-white/20 text-white py-4 rounded-xl font-semibold text-sm text-center hover:bg-white/20 transition-all"
@@ -60,7 +54,9 @@ export default function HeroSection() {
         <div className="relative bg-black">
           <video
             src="/assets/HEROVIDEO.MP4"
-            controls
+            autoPlay
+            muted
+            loop
             playsInline
             className="w-full"
             poster="/assets/hero-poster.jpg"
@@ -92,13 +88,7 @@ export default function HeroSection() {
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-4">
-            <Link
-              href="/shop"
-              id="hero-buy-now-desktop"
-              className="bg-[#C8102E] text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-[#a50d26] transition-all hover:shadow-[0_8px_24px_rgba(200,16,46,0.4)] hover:-translate-y-0.5 active:translate-y-0"
-            >
-              Buy Now — $29.00 CAD
-            </Link>
+
             <a
               href="#setup-guide"
               id="hero-learn-more"
