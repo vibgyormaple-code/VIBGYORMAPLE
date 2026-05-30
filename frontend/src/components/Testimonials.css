@@ -1,0 +1,156 @@
+:root {
+  --primary-red: #cc0000;
+  --dark-gray: #1a1a2e;
+  --off-white: #ffffff;
+  --shadow-light: rgba(204, 0, 0, 0.1);
+  --shadow-medium: rgba(204, 0, 0, 0.2);
+  --shadow-strong: rgba(204, 0, 0, 0.3);
+}
+
+.testimonials-section {
+  background-color: var(--off-white);
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.testimonials-section h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--dark-gray);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: var(--dark-gray);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px var(--shadow-light);
+  padding: 32px 24px;
+  text-align: left;
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.quote-icon {
+  font-size: 3rem;
+  color: var(--primary-red);
+  position: absolute;
+  top: 24px;
+  left: 24px;
+}
+
+.stars {
+  margin-left: 60px;
+  margin-bottom: 16px;
+}
+
+.star {
+  color: gold;
+  font-size: 1.2rem;
+  margin-right: 4px;
+}
+
+.quote-text {
+  font-size: 1.1rem;
+  color: var(--dark-gray);
+  margin-bottom: 24px;
+  margin-left: 60px;
+}
+
+.customer-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 60px;
+}
+
+.customer-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.customer-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+}
+
+.customer-details strong {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.product-used {
+  color: var(--primary-red);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.carousel-controls {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  transform: none;
+}
+
+.carousel-btn {
+  background: transparent;
+  border: 1px solid var(--primary-red);
+  color: var(--primary-red);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: var(--primary-red);
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .testimonial-card {
+    padding: 24px 16px;
+  }
+
+  .quote-icon {
+    font-size: 2.5rem;
+    top: 16px;
+    left: 16px;
+  }
+
+  .stars,
+  .quote-text,
+  .customer-info {
+    margin-left: 50px;
+  }
+
+  .customer-photo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .carousel-controls {
+    right: 16px;
+  }
+}

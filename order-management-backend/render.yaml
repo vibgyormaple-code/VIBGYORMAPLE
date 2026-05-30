@@ -1,0 +1,21 @@
+# Render service definition — edit values before use
+# See: https://render.com/docs/deploying#render-yaml
+services:
+  - type: web
+    name: order-management-backend
+    env: node
+    region: oregon
+    plan: free
+    branch: main
+    repo: https://github.com/vibgyormaple-code/grasshawk2014
+    buildCommand: npm install
+    startCommand: npm start
+    workingDirectory: .
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "5004"
+      # Do NOT commit secrets here. Set sensitive vars in Render Dashboard instead.
+      # - key: MONGODB_URI
+      #   value: mongodb+srv://username:password@cluster.mongodb.net/grasshawk

@@ -1,0 +1,170 @@
+/* About Section with Creative Color Palette and Animations */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+.about-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.85) 0%, rgba(232, 233, 234, 0.85) 100%), 
+              url('../assets/about_us_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+.about-container {
+  max-width: 1100px; /* slightly wider */
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  animation: slideUp 1.2s ease-out;
+}
+
+.about-container h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  background: linear-gradient(135deg, var(--primary-red), #cc0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  animation: fadeInUp 1s ease-out;
+  text-align: center;
+}
+
+.about-container h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 35px 0 20px 0;
+  color: var(--dark-gray);
+  text-align: center;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.about-container ul,
+.about-container p {
+  background-color: white;
+  padding: 40px; /* more breathing space */
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* softer shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: var(--dark-gray);
+  line-height: 1.9;
+}
+
+.about-container p {
+  text-align: justify;
+}
+
+.about-container ul:hover,
+.about-container p:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px var(--shadow-red);
+}
+
+.about-container li {
+  font-size: 18px;
+  color: var(--dark-gray);
+  line-height: 1.9;
+  margin-bottom: 12px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.about-container li:before {
+  content: "•";
+  color: var(--primary-red);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 22px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Floating Decorative Elements */
+.about-section::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, var(--primary-red), #cc0000);
+  border-radius: 50%;
+  opacity: 0.12;
+  animation: float 6s ease-in-out infinite;
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  width: 160px;
+  height: 160px;
+  background: linear-gradient(135deg, var(--dark-gray), var(--light-gray));
+  border-radius: 50%;
+  opacity: 0.07;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 20px;
+  }
+
+  .about-container h2 {
+    font-size: 32px;
+  }
+
+  .about-container h3 {
+    font-size: 24px;
+  }
+
+  .about-container p,
+  .about-container ul {
+    padding: 25px;
+    font-size: 16px;
+  }
+}

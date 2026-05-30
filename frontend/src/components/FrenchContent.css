@@ -1,0 +1,94 @@
+.french-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+.french-section {
+  margin-bottom: 40px;
+}
+
+.french-title {
+  color: #fb8c00;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #fb8c00;
+  padding-bottom: 10px;
+}
+
+.french-panel {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-image-placeholder {
+  width: 200px;
+  height: 200px;
+  background: #e0e0e0;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.product-info h3 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.slogan {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.french-panel h3 {
+  color: #fb8c00;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.french-panel h4 {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.french-panel ul, .french-panel ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.french-panel li {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.french-panel p {
+  color: #666;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .french-content {
+    padding: 20px 15px;
+  }
+  
+  .french-title {
+    font-size: 20px;
+  }
+  
+  .french-panel {
+    padding: 15px;
+  }
+}

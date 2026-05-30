@@ -1,0 +1,96 @@
+.mole-trap-instructions {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.instructions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  padding: 20px;
+}
+
+.instruction-step {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(204, 0, 0, 0.15);
+  padding: 24px 20px 30px;
+  position: relative;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.instruction-step:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(204, 0, 0, 0.3);
+}
+
+.instruction-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  border: 3px solid #cc0000;
+  box-shadow: 0 4px 12px rgba(204, 0, 0, 0.2);
+  background: #fff;
+}
+
+.step-number {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: #cc0000;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.instruction-step h3 {
+  font-size: 1.3rem;
+  color: #b30000;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.instruction-step p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 260px;
+}
+
+@media (max-width: 600px) {
+  .instructions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .instruction-step {
+    padding: 20px 16px 24px;
+  }
+
+  .instruction-image {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+  }
+
+  .step-number {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+    top: 12px;
+    left: 12px;
+  }
+}

@@ -1,0 +1,329 @@
+:root {
+  --primary-red: #cc0000;
+  --dark-gray: #1a1a2e;
+  --off-white: #ffffff; /* Changed to white to match other pages */
+  --shadow-light: rgba(204, 0, 0, 0.1);
+  --shadow-medium: rgba(204, 0, 0, 0.2);
+  --shadow-strong: rgba(204, 0, 0, 0.3);
+  --navbar-height: 70px; /* Navbar height for consistent spacing */
+}
+
+.certifications-trust-section {
+  background-color: var(--off-white);
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.certifications-trust-section h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--dark-gray);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: var(--dark-gray);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.certifications-cards {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.cert-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px var(--shadow-light);
+  padding: 24px 20px;
+  width: 220px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px var(--shadow-strong);
+}
+
+.cert-card h3 {
+  margin-bottom: 12px;
+  color: var(--dark-gray);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.cert-card p {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Icons */
+.icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px auto;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-red);
+  font-size: 24px;
+}
+
+/* Specific icons can be replaced with SVG or font icons */
+.shield-icon::before {
+  content: "🛡️";
+}
+
+.leaf-icon::before {
+  content: "🍃";
+}
+
+.ribbon-icon::before {
+  content: "🎗️";
+}
+
+.location-icon::before {
+  content: "";
+}
+
+/* Logo styling for canada-logo in certification card */
+.canada-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 50%;
+  padding: 4px;
+  background: white;
+}
+
+/* Logo styling for canada-gov-logo in registered design section */
+.canada-gov-logo {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 50%;
+  padding: 15px;
+  background: white;
+}
+
+.quality-assurance-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.quality-assurance-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--dark-gray);
+}
+
+.quality-assurance-section p {
+  font-size: 1rem;
+  color: var(--dark-gray);
+  line-height: 1.6;
+}
+
+.registered-design-section {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  padding: 24px 20px;
+  background: var(--off-white);
+  border-radius: 16px;
+  box-shadow: 0 6px 24px var(--shadow-light);
+  text-align: center;
+}
+
+.registered-design-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.registered-design-logo {
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px; /* Reduced font size */
+  color: var(--primary-red);
+  font-weight: bold;
+  box-shadow: 0 4px 14px var(--shadow-light);
+}
+
+.registered-design-card p {
+  font-size: 1rem;
+  color: var(--dark-gray);
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .certifications-trust-section {
+    padding: 50px 16px;
+  }
+
+  .certifications-cards {
+    gap: 24px;
+  }
+
+  .cert-card {
+    width: 200px;
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .certifications-trust-section {
+    padding: 40px 16px;
+  }
+
+  .certifications-trust-section h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+  }
+
+  .certifications-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cert-card {
+    width: 100%;
+    max-width: 300px;
+    padding: 24px 20px;
+  }
+
+  .cert-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .cert-card p {
+    font-size: 0.9rem;
+  }
+
+  .canada-logo {
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+  }
+
+  .quality-assurance-section {
+    padding: 20px 16px;
+  }
+
+  .quality-assurance-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .registered-design-section {
+    padding: 20px 16px;
+    margin: 0 auto 40px;
+  }
+
+  .registered-design-logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .canada-gov-logo {
+    width: 160px;
+    height: 160px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications-trust-section {
+    padding: 30px 12px;
+  }
+
+  .certifications-trust-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+
+  .certifications-cards {
+    gap: 16px;
+  }
+
+  .cert-card {
+    padding: 20px 16px;
+    min-height: 200px;
+  }
+
+  .cert-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .cert-card p {
+    font-size: 0.85rem;
+  }
+
+  .canada-logo {
+    width: 36px;
+    height: 36px;
+    padding: 3px;
+  }
+
+  .quality-assurance-section {
+    padding: 16px 12px;
+  }
+
+  .quality-assurance-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .quality-assurance-section p {
+    font-size: 0.9rem;
+  }
+
+  .registered-design-section {
+    padding: 16px 12px;
+    margin: 0 auto 30px;
+  }
+
+  .registered-design-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .canada-gov-logo {
+    width: 140px;
+    height: 140px;
+    padding: 10px;
+  }
+
+  .registered-design-card p {
+    font-size: 0.9rem;
+  }
+}

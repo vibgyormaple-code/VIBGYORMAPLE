@@ -1,0 +1,164 @@
+{
+  "info": {
+    "name": "Order Management API",
+    "description": "Complete order management backend with MongoDB Atlas integration",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerDetails\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"+919876543210\",\n    \"address\": {\n      \"street\": \"123 Main Street\",\n      \"city\": \"Mumbai\",\n      \"state\": \"Maharashtra\",\n      \"zipCode\": \"400001\",\n      \"country\": \"India\"\n    }\n  },\n  \"items\": [\n    {\n      \"productId\": \"PROD-001\",\n      \"productName\": \"Mole Trap Premium\",\n      \"quantity\": 2,\n      \"price\": 1500,\n      \"total\": 3000\n    },\n    {\n      \"productId\": \"PROD-002\",\n      \"productName\": \"Pest Control Solution\",\n      \"quantity\": 1,\n      \"price\": 800,\n      \"total\": 800\n    }\n  ],\n  \"orderSummary\": {\n    \"subtotal\": 3800,\n    \"tax\": 684,\n    \"shipping\": 100,\n    \"total\": 4584\n  },\n  \"paymentDetails\": {\n    \"method\": \"card\",\n    \"status\": \"pending\"\n  },\n  \"notes\": \"Please deliver between 9 AM - 6 PM\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "orders"]
+        }
+      }
+    },
+    {
+      "name": "Get All Orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/orders?page=1&limit=10",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "orders"],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Order by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/orders/:id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "orders", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "ORDER_ID_HERE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Order Status",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"orderStatus\": \"confirmed\",\n  \"notes\": \"Order has been confirmed and is being processed\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/orders/:id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "orders", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "ORDER_ID_HERE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Order",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/orders/:id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "orders", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "ORDER_ID_HERE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Order Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/orders/stats/summary",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "orders", "stats", "summary"]
+        }
+      }
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ]
+}

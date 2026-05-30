@@ -1,0 +1,463 @@
+/* Global Styles - Exact same as Contact.css applied to all pages */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* CSS Variables from Contact.css */
+:root {
+  --primary-red: #e74c3c;
+  --dark-gray: #2c3e50;
+  --light-gray: #bdc3c7;
+  --off-white: #f8f9fa;
+  --shadow-gray: rgba(0, 0, 0, 0.1);
+  --shadow-red: rgba(231, 76, 60, 0.15);
+  --navbar-height: 70px; /* Navbar height for consistent spacing */
+}
+
+/* Global Section Styling - Same as Contact Section */
+.global-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, var(--off-white) 0%, #e8e9ea 100%);
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.global-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpattern id='dots' width='20' height='20' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='10' cy='10' r='1' fill='%23FF0000' opacity='0.1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23dots)'/%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+.global-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.global-header {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.global-section h1,
+.global-section h2,
+.global-section h3,
+.global-section h4,
+.global-section h5,
+.global-section h6 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, var(--primary-red), #cc0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+}
+
+.global-section h2 {
+  font-size: 42px;
+}
+
+.global-section p {
+  font-size: 18px;
+  color: var(--dark-gray);
+  max-width: 500px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+/* Global Content Layout */
+.global-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Global Card Styling */
+.global-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px var(--shadow-gray);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: slideInLeft 1s ease-out;
+}
+
+.global-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px var(--shadow-red);
+}
+
+/* Global Form Styling */
+.global-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.global-form .form-group {
+  position: relative;
+}
+
+.global-form input,
+.global-form textarea,
+.global-form select {
+  padding: 16px;
+  border: 2px solid var(--light-gray);
+  border-radius: 12px;
+  font-size: 16px;
+  width: 100%;
+  background: var(--off-white);
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.global-form input:focus,
+.global-form textarea:focus,
+.global-form select:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-red);
+}
+
+.global-form input::placeholder,
+.global-form textarea::placeholder,
+.global-form select::placeholder {
+  color: var(--light-gray);
+  transition: color 0.3s ease;
+}
+
+.global-form input:focus::placeholder,
+.global-form textarea:focus::placeholder,
+.global-form select:focus::placeholder {
+  color: var(--dark-gray);
+}
+
+.global-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Global Button Styling */
+.global-button,
+.global-btn {
+  background: linear-gradient(135deg, var(--primary-red), #cc0000);
+  color: white;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.global-button::before,
+.global-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.global-button:hover::before,
+.global-btn:hover::before {
+  left: 100%;
+}
+
+.global-button:hover,
+.global-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-red);
+}
+
+/* Global Info Card Styling */
+.global-info-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px var(--shadow-gray);
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+  animation: slideInRight 1s ease-out;
+}
+
+.global-info-card:hover {
+  transform: translateY(-3px);
+}
+
+.global-info-card h3 {
+  color: var(--dark-gray);
+  font-size: 24px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.global-info-card h3::before {
+  content: "";
+  width: 30px;
+  height: 3px;
+  background: var(--primary-red);
+}
+
+/* Global Contact Item Styling */
+.global-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--off-white);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.global-contact-item:hover {
+  background: var(--primary-red);
+  color: white;
+  transform: translateX(5px);
+}
+
+.global-contact-item::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--primary-red);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.global-contact-item:hover::before {
+  background: white;
+}
+
+/* Success Message */
+.global-success-msg {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  font-weight: 600;
+  text-align: center;
+  animation: bounceIn 0.6s ease-out;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Floating Animation for Background */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Decorative Elements */
+.global-section::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--primary-red), #cc0000);
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.global-section::before {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, var(--dark-gray), var(--light-gray));
+  border-radius: 50%;
+  opacity: 0.05;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px; /* Smaller navbar height for mobile */
+  }
+  
+  .global-section {
+    padding: 60px 20px;
+  }
+
+  .global-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .global-card,
+  .global-info-card {
+    padding: 30px 20px;
+  }
+
+  .global-section h2 {
+    font-size: 32px;
+  }
+
+  .global-button,
+  .global-btn {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 55px; /* Even smaller navbar height for small mobile */
+  }
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+.mt-1 {
+  margin-top: 0.5rem;
+}
+.mt-2 {
+  margin-top: 1rem;
+}
+.mt-3 {
+  margin-top: 1.5rem;
+}
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 1rem;
+}
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.p-1 {
+  padding: 0.5rem;
+}
+.p-2 {
+  padding: 1rem;
+}
+.p-3 {
+  padding: 1.5rem;
+}
+.p-4 {
+  padding: 2rem;
+}
+
+/* Apply to body for global effect */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, var(--off-white) 0%, #e8e9ea 100%);
+  color: var(--dark-gray);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  padding-top: var(--navbar-height, 70px); /* Add navbar height to body padding */
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main Content */
+.app-container > div:not(.footer) {
+  flex: 1;
+}

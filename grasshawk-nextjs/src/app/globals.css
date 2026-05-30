@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --grasshawk-red: #C8102E;
+    --grasshawk-dark: #1A1A1A;
+    --grasshawk-bg: #F8F8F8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  * {
+    @apply box-border;
+  }
+}
+
+@layer utilities {
+  .font-montserrat {
+    font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+  }
+  .font-inter {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+  }
+}
+
+/* Animate in utility (for modals) */
+@keyframes fadeInZoom {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-in {
+  animation: fadeInZoom 0.2s ease-out forwards;
+}
+
+/* Video object fit */
+video {
+  object-fit: cover;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #C8102E;
+  border-radius: 3px;
+}

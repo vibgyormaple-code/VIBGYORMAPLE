@@ -1,0 +1,79 @@
+{
+  "info": {
+    "name": "Parul Chemicals API",
+    "description": "Postman collection for testing Parul Chemicals backend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Checkout Session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"items\": [\n    {\n      \"name\": \"Mole Trap Pro\",\n      \"price\": 29.99,\n      \"quantity\": 2\n    },\n    {\n      \"name\": \"Premium Mole Control Kit\",\n      \"price\": 49.99,\n      \"quantity\": 1\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/create-checkout-session",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["create-checkout-session"]
+        }
+      }
+    },
+    {
+      "name": "Test Webhook",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "stripe-signature",
+            "value": "whsec_test_your_webhook_secret"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"checkout.session.completed\",\n  \"data\": {\n    \"object\": {\n      \"id\": \"cs_test_1234567890\",\n      \"payment_intent\": \"pi_test_1234567890\",\n      \"amount_total\": 10997,\n      \"customer_email\": \"test@parulchemicals.com\",\n      \"metadata\": {\n        \"cart\": \"[{\\\"name\\\":\\\"Mole Trap Pro\\\",\\\"price\\\":29.99,\\\"quantity\\\":2},{\\\"name\\\":\\\"Premium Mole Control Kit\\\",\\\"price\\\":49.99,\\\"quantity\\\":1}]\"\n      }\n    }\n  }\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/webhook",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["webhook"]
+        }
+      }
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": [""]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:4000"
+    }
+  ]
+}

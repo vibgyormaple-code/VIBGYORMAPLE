@@ -1,0 +1,123 @@
+/* AppFinal Component Styles */
+.app-container {
+  min-height: 100vh;
+  background: var(--background-primary);
+}
+
+.main-content {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.hero-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.hero {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.features-section {
+  margin: 0 !important;
+  padding: 40px 0 !important;
+}
+
+.cta-section {
+  margin: 0 !important;
+  padding: 40px 0 !important;
+}
+
+.main-content > * {
+  margin: 0 !important;
+}
+
+.loading-container {
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.section:nth-child(even) {
+  background: var(--background-secondary);
+}
+
+.section-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FORCE CENTERING - CRITICAL OVERRIDES */
+.features-section {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  padding: 40px 0 !important;
+}
+
+.features-section .container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+.features-section .features-grid {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  gap: 40px !important;
+  text-align: center !important;
+}
+
+.features-section .section-title {
+  text-align: center !important;
+  width: 100% !important;
+  margin: 0 auto 3rem auto !important;
+  display: block !important;
+}

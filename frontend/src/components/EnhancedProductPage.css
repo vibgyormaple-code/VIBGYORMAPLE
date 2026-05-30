@@ -1,0 +1,324 @@
+.enhanced-product-section {
+  padding: 120px 20px 80px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.enhanced-product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.product-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.product-header h1 {
+  font-size: 3rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.product-subtitle {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.product-card-enhanced {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card-enhanced:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: #e74c3c;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.product-image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.product-image img {
+  width: 100%;
+  max-width: 250px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-info h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.product-description {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Pricing Info */
+.pricing-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.current-price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.original-price {
+  font-size: 1.2rem;
+  color: #95a5a6;
+  text-decoration: line-through;
+}
+
+.savings {
+  background: #e74c3c;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Product Features */
+.product-features {
+  list-style: none;
+  margin-bottom: 25px;
+}
+
+.product-features li {
+  padding: 5px 0;
+  color: #34495e;
+  font-size: 0.9rem;
+}
+
+/* Product Actions */
+.product-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.add-to-cart-btn, .quick-buy-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart-btn {
+  background: #3498db;
+  color: white;
+}
+
+.add-to-cart-btn:hover {
+  background: #2980b9;
+}
+
+.quick-buy-btn {
+  background: #27ae60;
+  color: white;
+}
+
+.quick-buy-btn:hover {
+  background: #229954;
+}
+
+/* How to Use Section */
+.how-to-use-section {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 60px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.how-to-use-section h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+/* Cart Summary */
+.cart-summary {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cart-summary h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.cart-items {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 1.2rem;
+  color: #27ae60;
+}
+
+/* FAQ Section */
+.faq-section {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.faq-item h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.faq-item p {
+  color: #7f8c8d;
+  line-height: 1.6;
+}
+
+/* Support Section */
+.support-section {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.support-section h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.support-section p {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.contact-support-btn {
+  background: #9b59b6;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-support-btn:hover {
+  background: #8e44ad;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .product-card-enhanced {
+    padding: 20px;
+  }
+  
+  .product-actions {
+    flex-direction: column;
+  }
+  
+  .how-to-use-section,
+  .faq-section,
+  .support-section {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .enhanced-product-section {
+    padding: 40px 15px;
+  }
+  
+  .product-header h1 {
+    font-size: 2rem;
+  }
+  
+  .current-price {
+    font-size: 1.5rem;
+  }
+}
