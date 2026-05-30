@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 
 const steps = [
   {
@@ -92,16 +91,7 @@ export default function SetupGuide() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-gray-500 text-sm mb-4">Ready to get started?</p>
-          <Link
-            href="/shop"
-            className="inline-flex bg-[#C8102E] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#a50d26] transition-all hover:shadow-lg hover:-translate-y-0.5"
-          >
-            Order Grasshawk KLAW — $29.00 CAD
-          </Link>
-        </div>
+
       </div>
     </section>
   );
