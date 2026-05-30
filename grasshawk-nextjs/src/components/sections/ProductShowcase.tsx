@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ShoppingCart, X, ChevronRight } from 'lucide-react';
@@ -239,7 +239,7 @@ export default function ProductShowcase() {
 
               {/* What's in the Box checklist */}
               <div className="bg-[#f8f8f8] rounded-2xl p-6 mb-6">
-                <h4 className="font-bold text-[#1A1A1A] text-xs uppercase tracking-wider mb-3">What's In The Box</h4>
+                <h4 className="font-bold text-[#1A1A1A] text-xs uppercase tracking-wider mb-3">What&apos;s In The Box</h4>
                 <ul className="space-y-2 text-sm text-gray-600">
                   {[
                     '1× Grasshawk KLAW™ Professional Mole Trap',

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ShoppingBag, ArrowRight, Tag, Truck } from 'lucide-react';
+import { ShoppingBag, ArrowRight, Truck } from 'lucide-react';
 import CartItem from '@/components/ui/CartItem';
 import { useCartStore } from '@/store/cartStore';
 
@@ -65,7 +65,7 @@ export default function CartPage() {
             {sub >= 100 && (
               <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3">
                 <Truck size={18} className="text-green-600 flex-shrink-0" />
-                <p className="text-sm font-semibold text-green-800">🎉 You've unlocked <strong>free shipping!</strong></p>
+                <p className="text-sm font-semibold text-green-800">🎉 You&apos;ve unlocked <strong>free shipping!</strong></p>
               </div>
             )}
           </div>

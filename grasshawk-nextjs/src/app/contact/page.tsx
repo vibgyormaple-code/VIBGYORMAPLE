@@ -13,12 +13,12 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#1A1A1A] to-[#2d0a12] text-white py-20 px-4 text-center">
         <span className="inline-block bg-[#C8102E]/20 border border-[#C8102E]/30 rounded-full px-4 py-1.5 text-sm font-semibold text-[#ff8099] mb-5">
-          We're here to help
+          We&apos;re here to help
         </span>
         <h1 className="text-5xl font-black mb-4">Contact Us</h1>
         <p className="text-gray-400 text-lg max-w-xl mx-auto">
           Whether you have a product question, want to become a distributor, or just want to say hello —
-          we'd love to hear from you.
+          we&apos;d love to hear from you.
         </p>
       </section>
 

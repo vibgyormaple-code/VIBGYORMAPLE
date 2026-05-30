@@ -159,7 +159,7 @@ export default function OTPModal({ email, onVerified, onClose }: OTPModalProps) 
             </button>
 
             <p className="text-center text-sm text-gray-500">
-              Didn't receive it?{' '}
+              Didn&apos;t receive it?{' '}
               <button
                 onClick={handleResend}
                 disabled={resending}

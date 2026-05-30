@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     await dbConnect();
     const orders = await Order.find().sort({ createdAt: -1 }).limit(50);

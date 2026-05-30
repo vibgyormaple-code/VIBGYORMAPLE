@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Testimonials from '@/components/sections/Testimonials';
-import { Building2, Globe, Award, Heart, Users, Target, MapPin, Star } from 'lucide-react';
+import { Building2, Globe, Award, Heart, Users, Target, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Us — VIBGYOR Maple Inc. & Grasshawk KLAW',
@@ -47,7 +47,7 @@ export default function AboutPage() {
             About <span className="text-[#C8102E]">Grasshawk</span>
           </h1>
           <p className="text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
-            We're a Canadian company passionate about protecting the land that feeds us —
+            We&apos;re a Canadian company passionate about protecting the land that feeds us —
             without chemicals, without compromise.
           </p>
         </div>
@@ -67,7 +67,7 @@ export default function AboutPage() {
               <p>
                 VIBGYOR Maple Inc. was founded with a singular vision: to bring effective, eco-friendly pest control
                 solutions to Canadian homeowners and agricultural communities. Operating from Alberta, Canada,
-                we bridge the gap between high-quality Indian manufacturing and the Canadian market's need for
+                we bridge the gap between high-quality Indian manufacturing and the Canadian market&apos;s need for
                 reliable, safe products.
               </p>
               <p>
@@ -76,7 +76,7 @@ export default function AboutPage() {
                 thousands of customers from British Columbia to Ontario.
               </p>
               <p>
-                Our core belief is simple: you shouldn't have to choose between an effective pest solution and
+                Our core belief is simple: you shouldn&apos;t have to choose between an effective pest solution and
                 the safety of your children, pets, or the environment. KLAW delivers results without compromise.
               </p>
             </div>
@@ -127,7 +127,7 @@ export default function AboutPage() {
             <Globe size={32} className="text-[#C8102E] mb-4" />
             <h3 className="text-xl font-black text-[#1A1A1A] mb-3">Our Vision</h3>
             <p className="text-gray-600 leading-relaxed">
-              To become Canada's most trusted provider of eco-friendly pest control solutions —
+              To become Canada&apos;s most trusted provider of eco-friendly pest control solutions —
               protecting every lawn, garden, and farm from coast to coast without the use of harmful chemicals.
             </p>
           </div>
@@ -208,7 +208,7 @@ export default function AboutPage() {
       <section className="py-20 px-4 bg-[#f8f8f8]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-black text-[#1A1A1A] mb-3">Let's Work Together</h2>
+            <h2 className="text-3xl font-black text-[#1A1A1A] mb-3">Let&apos;s Work Together</h2>
             <p className="text-gray-500">Explore partnership and business opportunities with VIBGYOR Maple Inc.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

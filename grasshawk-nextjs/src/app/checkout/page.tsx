@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Loader2, CheckCircle, CreditCard, Package, Truck, User, ChevronRight } from 'lucide-react';
+import { Loader2, CheckCircle, CreditCard, Package, User, ChevronRight } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import OTPModal from '@/components/ui/OTPModal';
 
@@ -315,7 +315,7 @@ export default function CheckoutPage() {
 
                 {paymentMethod === 'razorpay' && (
                   <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 text-sm text-blue-700">
-                    <p>🔒 You'll be redirected to Razorpay's secure payment gateway to complete your payment.</p>
+                    <p>🔒 You&apos;ll be redirected to Razorpay&apos;s secure payment gateway to complete your payment.</p>
                   </div>
                 )}
 

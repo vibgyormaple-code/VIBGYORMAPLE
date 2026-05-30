@@ -53,7 +53,7 @@ export default function Footer() {
               and landscapers. No chemicals. No poisons. Just results.
             </p>
             <p className="text-xs text-gray-500 mb-4 italic">
-              "You grow it, we protect it."
+              &quot;You grow it, we protect it.&quot;
             </p>
 
             {/* Contact info */}

@@ -2,7 +2,6 @@
 
 import BenefitCard from '@/components/ui/BenefitCard';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const benefits = [
   {
