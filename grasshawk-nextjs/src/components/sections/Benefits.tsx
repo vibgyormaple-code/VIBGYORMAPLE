@@ -67,7 +67,6 @@ export default function Benefits() {
                   iconImage={b.iconImage}
                   title={b.title}
                   description={b.description}
-                  accent={b.accent}
                 />
               ))}
             </div>
