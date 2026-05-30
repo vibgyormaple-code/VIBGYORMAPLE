@@ -13,7 +13,6 @@ const benefits = [
     iconImage: '/assets/easytosetup.png',
     title: 'Easy to Set Up',
     description: "Our intuitive 4-step setup means you're ready to go in minutes — no tools, no expertise needed.",
-    accent: true,
   },
 
   {
