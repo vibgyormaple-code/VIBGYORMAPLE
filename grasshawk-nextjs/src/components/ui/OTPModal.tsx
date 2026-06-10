@@ -5,11 +5,13 @@ import { X, Loader2, CheckCircle } from 'lucide-react';
 
 interface OTPModalProps {
   email: string;
+  otpToken: string;
+  onTokenUpdate: (newToken: string) => void;
   onVerified: () => void;
   onClose: () => void;
 }
 
-export default function OTPModal({ email, onVerified, onClose }: OTPModalProps) {
+export default function OTPModal({ email, otpToken, onTokenUpdate, onVerified, onClose }: OTPModalProps) {
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [loading, setLoading] = useState(false);
   const [resending, setResending] = useState(false);
@@ -58,7 +60,7 @@ export default function OTPModal({ email, onVerified, onClose }: OTPModalProps) 
       const res = await fetch('/api/verify-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, otp: otpStr }),
+        body: JSON.stringify({ email, otp: otpStr, otpToken }),
       });
       const data = await res.json();
 
@@ -82,11 +84,17 @@ export default function OTPModal({ email, onVerified, onClose }: OTPModalProps) 
     inputRefs.current[0]?.focus();
 
     try {
-      await fetch('/api/send-otp', {
+      const res = await fetch('/api/send-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
+      const data = await res.json();
+      if (res.ok && data.otpToken) {
+        onTokenUpdate(data.otpToken);
+      } else {
+        setError(data.message || 'Failed to resend OTP.');
+      }
     } catch {
       setError('Failed to resend OTP.');
     } finally {

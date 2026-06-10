@@ -35,6 +35,7 @@ export default function CheckoutPage() {
   const [errors, setErrors] = useState<Partial<CustomerInfo>>({});
   const [showOTP, setShowOTP] = useState(false);
   const [otpSending, setOtpSending] = useState(false);
+  const [otpToken, setOtpToken] = useState('');
   const [orderLoading, setOrderLoading] = useState(false);
   const [orderId, setOrderId] = useState('');
 
@@ -71,13 +72,20 @@ export default function CheckoutPage() {
       // Send OTP
       setOtpSending(true);
       try {
-        await fetch('/api/send-otp', {
+        const res = await fetch('/api/send-otp', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: info.email }),
         });
-        setStep(1); // Set step to 1 so the progress bar updates
-        setShowOTP(true);
+        const data = await res.json();
+        
+        if (res.ok && data.otpToken) {
+          setOtpToken(data.otpToken);
+          setStep(1); // Set step to 1 so the progress bar updates
+          setShowOTP(true);
+        } else {
+          alert(data.message || 'Failed to send verification code.');
+        }
       } catch {
         alert('Failed to send verification code. Please try again.');
       } finally {
@@ -390,6 +398,8 @@ export default function CheckoutPage() {
       {showOTP && (
         <OTPModal
           email={info.email}
+          otpToken={otpToken}
+          onTokenUpdate={setOtpToken}
           onVerified={handleOTPVerified}
           onClose={() => {
             setShowOTP(false);
