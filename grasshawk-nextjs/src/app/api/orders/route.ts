@@ -34,33 +34,35 @@ export async function POST(req: NextRequest) {
       createdAt: new Date(),
     };
 
-    // Send emails (non-blocking) - sends details to business/supplier and confirmation to customer
-    sendOrderNotification({
-      _id: mockOrderId,
-      customerName,
-      email,
-      phone,
-      address,
-      items,
-      subtotal,
-      tax,
-      shipping,
-      total,
-      paymentMethod
-    }).catch(console.error);
-
-    sendOrderConfirmation({
-      _id: mockOrderId,
-      customerName,
-      email,
-      items,
-      subtotal,
-      tax,
-      shipping,
-      total,
-      paymentMethod,
-      address
-    }).catch(console.error);
+    // Await emails because Vercel Serverless Functions immediately freeze execution
+    // the moment NextResponse is returned, killing non-blocking background promises.
+    await Promise.all([
+      sendOrderNotification({
+        _id: mockOrderId,
+        customerName,
+        email,
+        phone,
+        address,
+        items,
+        subtotal,
+        tax,
+        shipping,
+        total,
+        paymentMethod
+      }).catch(console.error),
+      sendOrderConfirmation({
+        _id: mockOrderId,
+        customerName,
+        email,
+        items,
+        subtotal,
+        tax,
+        shipping,
+        total,
+        paymentMethod,
+        address
+      }).catch(console.error)
+    ]);
 
     return NextResponse.json({ success: true, order }, { status: 201 });
   } catch (error) {

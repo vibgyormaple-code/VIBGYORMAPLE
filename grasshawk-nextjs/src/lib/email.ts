@@ -2,11 +2,11 @@ import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false, // Use STARTTLS (port 587) instead of SSL (port 465) which is sometimes blocked by Vercel
   auth: {
     user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
+    pass: (process.env.GMAIL_APP_PASSWORD || '').replace(/\s+/g, ''), // Strip spaces from the app password
   },
 });
 

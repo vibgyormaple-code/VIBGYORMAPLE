@@ -10,8 +10,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
 
-    // Send notification email (non-blocking) to the supplier
-    sendLeadNotification({
+    // Await notification email so Vercel does not terminate the execution
+    await sendLeadNotification({
       name,
       companyName,
       email,
