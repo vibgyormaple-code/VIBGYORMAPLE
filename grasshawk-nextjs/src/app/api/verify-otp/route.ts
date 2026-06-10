@@ -11,8 +11,8 @@ export async function POST(req: NextRequest) {
 
     const key = email.toLowerCase();
     
-    // Parse the otpToken (format: "email:expiresAt.hash")
-    const parts = otpToken.split('.');
+    // Parse the otpToken (format: "email:expiresAt|hash")
+    const parts = otpToken.split('|');
     if (parts.length !== 2) {
       return NextResponse.json({ message: 'Invalid token format' }, { status: 400 });
     }

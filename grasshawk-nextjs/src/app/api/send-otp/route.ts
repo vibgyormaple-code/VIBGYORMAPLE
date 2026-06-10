@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     const payload = `${key}:${expiresAt}`;
     const secret = process.env.JWT_SECRET || 'fallback-secret-for-dev';
     const hash = crypto.createHmac('sha256', secret).update(`${payload}:${otp}`).digest('hex');
-    const otpToken = `${payload}.${hash}`;
+    const otpToken = `${payload}|${hash}`;
 
     // Send OTP email
     await sendOTPEmail(email, otp);
