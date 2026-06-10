@@ -5,9 +5,10 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Loader2, CheckCircle, Mail, Package, User, ChevronRight } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
+import OTPModal from '@/components/ui/OTPModal';
 
 // Steps
-const STEPS = ['Customer Info', 'Confirm Request', 'Confirmation'];
+const STEPS = ['Customer Info', 'Verify Email', 'Confirm Request', 'Confirmation'];
 
 interface CustomerInfo {
   name: string;
@@ -32,6 +33,8 @@ export default function CheckoutPage() {
     line1: '', city: '', province: 'Alberta', postalCode: '',
   });
   const [errors, setErrors] = useState<Partial<CustomerInfo>>({});
+  const [showOTP, setShowOTP] = useState(false);
+  const [otpSending, setOtpSending] = useState(false);
   const [orderLoading, setOrderLoading] = useState(false);
   const [orderId, setOrderId] = useState('');
 
@@ -45,7 +48,7 @@ export default function CheckoutPage() {
 
   // Redirect if cart is empty
   useEffect(() => {
-    if (items.length === 0 && step < 2) {
+    if (items.length === 0 && step < 3) {
       router.push('/shop');
     }
   }, [items, step, router]);
@@ -62,11 +65,30 @@ export default function CheckoutPage() {
     return Object.keys(e).length === 0;
   };
 
-  const handleNextStep = () => {
+  const handleNextStep = async () => {
     if (step === 0) {
       if (!validate()) return;
-      setStep(1); // Proceed directly to confirmation request step
+      // Send OTP
+      setOtpSending(true);
+      try {
+        await fetch('/api/send-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: info.email }),
+        });
+        setStep(1); // Set step to 1 so the progress bar updates
+        setShowOTP(true);
+      } catch {
+        alert('Failed to send verification code. Please try again.');
+      } finally {
+        setOtpSending(false);
+      }
     }
+  };
+
+  const handleOTPVerified = () => {
+    setShowOTP(false);
+    setStep(2);
   };
 
   const handlePlaceOrder = async () => {
@@ -97,7 +119,7 @@ export default function CheckoutPage() {
       if (res.ok && data.order) {
         setOrderId(data.order._id);
         clearCart();
-        setStep(2); // Go to final confirmation screen
+        setStep(3); // Go to final confirmation screen
       } else {
         alert(data.message || 'Failed to place order request. Please try again.');
       }
@@ -144,8 +166,8 @@ export default function CheckoutPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main content */}
           <div className="lg:col-span-2">
-            {/* Step 0: Customer Info */}
-            {step === 0 && (
+            {/* Step 0 & 1: Customer Info (Form remains visible while OTP is verifying) */}
+            {(step === 0 || step === 1) && (
               <div className="bg-white rounded-2xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
                 <div className="flex items-center gap-3 mb-6">
                   <User size={22} className="text-[#C8102E]" />
@@ -162,6 +184,7 @@ export default function CheckoutPage() {
                         onChange={(e) => setInfo({ ...info, name: e.target.value })}
                         placeholder="John Smith"
                         className={inputClass('name')}
+                        disabled={step === 1}
                       />
                       {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                     </div>
@@ -173,6 +196,7 @@ export default function CheckoutPage() {
                         onChange={(e) => setInfo({ ...info, phone: e.target.value })}
                         placeholder="+1 (555) 000-0000"
                         className={inputClass('phone')}
+                        disabled={step === 1}
                       />
                       {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                     </div>
@@ -187,6 +211,7 @@ export default function CheckoutPage() {
                       onChange={(e) => setInfo({ ...info, email: e.target.value })}
                       placeholder="john@example.com"
                       className={inputClass('email')}
+                      disabled={step === 1}
                     />
                     {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                   </div>
@@ -199,6 +224,7 @@ export default function CheckoutPage() {
                       onChange={(e) => setInfo({ ...info, line1: e.target.value })}
                       placeholder="123 Maple Street"
                       className={inputClass('line1')}
+                      disabled={step === 1}
                     />
                     {errors.line1 && <p className="text-red-500 text-xs mt-1">{errors.line1}</p>}
                   </div>
@@ -212,6 +238,7 @@ export default function CheckoutPage() {
                         onChange={(e) => setInfo({ ...info, city: e.target.value })}
                         placeholder="Edmonton"
                         className={inputClass('city')}
+                        disabled={step === 1}
                       />
                       {errors.city && <p className="text-red-500 text-xs mt-1">{errors.city}</p>}
                     </div>
@@ -221,7 +248,8 @@ export default function CheckoutPage() {
                         id="checkout-province"
                         value={info.province}
                         onChange={(e) => setInfo({ ...info, province: e.target.value })}
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#C8102E]/30 focus:border-[#C8102E] bg-[#f8f8f8] focus:bg-white"
+                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#C8102E]/30 focus:border-[#C8102E] bg-[#f8f8f8] focus:bg-white disabled:opacity-70"
+                        disabled={step === 1}
                       >
                         {CANADIAN_PROVINCES.map((p) => <option key={p} value={p}>{p}</option>)}
                       </select>
@@ -234,6 +262,7 @@ export default function CheckoutPage() {
                         onChange={(e) => setInfo({ ...info, postalCode: e.target.value.toUpperCase() })}
                         placeholder="T5A 0A1"
                         className={inputClass('postalCode')}
+                        disabled={step === 1}
                       />
                       {errors.postalCode && <p className="text-red-500 text-xs mt-1">{errors.postalCode}</p>}
                     </div>
@@ -242,17 +271,19 @@ export default function CheckoutPage() {
 
                 <button
                   onClick={handleNextStep}
+                  disabled={otpSending || step === 1}
                   id="checkout-continue-btn"
-                  className="mt-8 w-full bg-[#C8102E] text-white py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-[#a50d26] transition-all"
+                  className="mt-8 w-full bg-[#C8102E] text-white py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-[#a50d26] transition-all disabled:opacity-60"
                 >
-                  Continue to Confirm Request
+                  {otpSending && <Loader2 size={18} className="animate-spin" />}
+                  {otpSending ? 'Sending Verification Code...' : 'Continue to Verify Email'}
                   <ChevronRight size={18} />
                 </button>
               </div>
             )}
 
-            {/* Step 1: Confirm Order Request */}
-            {step === 1 && (
+            {/* Step 2: Confirm Order Request */}
+            {step === 2 && (
               <div className="bg-white rounded-2xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
                 <div className="flex items-center gap-3 mb-6">
                   <Mail size={22} className="text-[#C8102E]" />
@@ -291,8 +322,8 @@ export default function CheckoutPage() {
               </div>
             )}
 
-            {/* Step 2: Confirmation */}
-            {step === 2 && (
+            {/* Step 3: Confirmation */}
+            {step === 3 && (
               <div className="bg-white rounded-2xl p-10 text-center shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
                 <CheckCircle size={72} className="text-green-500 mx-auto mb-5" />
                 <h2 className="text-3xl font-black text-[#1A1A1A] mb-3">Order Request Sent! 🎉</h2>
@@ -322,7 +353,7 @@ export default function CheckoutPage() {
           </div>
 
           {/* Order Summary sidebar */}
-          {step < 2 && (
+          {step < 3 && (
             <div className="lg:col-span-1">
               <div className="bg-white rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.08)] sticky top-24">
                 <h3 className="font-black text-[#1A1A1A] mb-5 flex items-center gap-2">
@@ -354,6 +385,18 @@ export default function CheckoutPage() {
           )}
         </div>
       </div>
+
+      {/* OTP Modal */}
+      {showOTP && (
+        <OTPModal
+          email={info.email}
+          onVerified={handleOTPVerified}
+          onClose={() => {
+            setShowOTP(false);
+            setStep(0); // Revert step if they close the modal
+          }}
+        />
+      )}
     </div>
   );
 }
