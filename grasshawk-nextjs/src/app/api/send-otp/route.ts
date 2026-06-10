@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import dbConnect from '@/lib/db';
-import OTP from '@/models/OTP';
 import { sendOTPEmail } from '@/lib/email';
+import { otpCache } from '@/lib/memoryStore';
 
 function generateOTP(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -15,15 +14,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Valid email is required' }, { status: 400 });
     }
 
-    await dbConnect();
-
-    // Invalidate existing OTPs for this email
-    await OTP.deleteMany({ email: email.toLowerCase() });
-
+    const key = email.toLowerCase();
     const otp = generateOTP();
     const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
 
-    await OTP.create({ email: email.toLowerCase(), otp, expiresAt, used: false });
+    // Store in memory cache instead of database
+    otpCache.set(key, {
+      email: key,
+      otp,
+      expiresAt,
+      used: false,
+    });
 
     // Send OTP email
     await sendOTPEmail(email, otp);

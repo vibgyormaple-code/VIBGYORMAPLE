@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import dbConnect from '@/lib/db';
-import Order from '@/models/Order';
 import { sendOrderNotification, sendOrderConfirmation } from '@/lib/email';
 
 export async function POST(req: NextRequest) {
@@ -16,18 +14,53 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
 
-    await dbConnect();
+    // Generate a unique mock order ID instead of MongoDB ObjectId
+    const mockOrderId = `GH-${Math.floor(100000 + Math.random() * 900000)}`;
 
-    const order = await Order.create({
-      customerName, email, phone, address,
-      items, subtotal, tax, shipping, total,
-      paymentMethod, paymentStatus,
+    const order = {
+      _id: mockOrderId,
+      customerName,
+      email,
+      phone,
+      address,
+      items,
+      subtotal,
+      tax,
+      shipping,
+      total,
+      paymentMethod,
+      paymentStatus,
       status: 'confirmed',
-    });
+      createdAt: new Date(),
+    };
 
-    // Send emails (non-blocking)
-    sendOrderNotification({ _id: order._id.toString(), customerName, email, phone, address, items, subtotal, tax, shipping, total, paymentMethod }).catch(console.error);
-    sendOrderConfirmation({ _id: order._id.toString(), customerName, email, items, subtotal, tax, shipping, total, paymentMethod, address }).catch(console.error);
+    // Send emails (non-blocking) - sends details to business/supplier and confirmation to customer
+    sendOrderNotification({
+      _id: mockOrderId,
+      customerName,
+      email,
+      phone,
+      address,
+      items,
+      subtotal,
+      tax,
+      shipping,
+      total,
+      paymentMethod
+    }).catch(console.error);
+
+    sendOrderConfirmation({
+      _id: mockOrderId,
+      customerName,
+      email,
+      items,
+      subtotal,
+      tax,
+      shipping,
+      total,
+      paymentMethod,
+      address
+    }).catch(console.error);
 
     return NextResponse.json({ success: true, order }, { status: 201 });
   } catch (error) {
@@ -37,12 +70,6 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET() {
-  try {
-    await dbConnect();
-    const orders = await Order.find().sort({ createdAt: -1 }).limit(50);
-    return NextResponse.json({ orders });
-  } catch (error) {
-    console.error('GET /api/orders error:', error);
-    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
-  }
+  // Return empty list or mock list since database is removed
+  return NextResponse.json({ orders: [] });
 }

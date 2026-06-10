@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import dbConnect from '@/lib/db';
-import OTP from '@/models/OTP';
+import { otpCache } from '@/lib/memoryStore';
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,19 +9,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Email and OTP are required' }, { status: 400 });
     }
 
-    await dbConnect();
+    const key = email.toLowerCase();
+    const record = otpCache.get(key);
 
-    const record = await OTP.findOne({
-      email: email.toLowerCase(),
-      used: false,
-    }).sort({ createdAt: -1 });
-
-    if (!record) {
-      return NextResponse.json({ message: 'OTP not found. Please request a new code.' }, { status: 400 });
+    if (!record || record.used) {
+      return NextResponse.json({ message: 'OTP not found or already used. Please request a new code.' }, { status: 400 });
     }
 
     if (new Date() > record.expiresAt) {
-      await OTP.deleteOne({ _id: record._id });
+      otpCache.delete(key);
       return NextResponse.json({ message: 'OTP has expired. Please request a new code.' }, { status: 400 });
     }
 
@@ -32,7 +27,7 @@ export async function POST(req: NextRequest) {
 
     // Mark as used
     record.used = true;
-    await record.save();
+    otpCache.set(key, record);
 
     return NextResponse.json({ success: true, message: 'Email verified successfully' });
   } catch (error) {

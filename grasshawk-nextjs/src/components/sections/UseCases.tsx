@@ -43,10 +43,10 @@ const useCases = [
 
 export default function UseCases() {
   return (
-    <section id="use-cases" className="py-20 bg-white">
+    <section id="use-cases" className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <span className="inline-block bg-[#C8102E]/10 text-[#C8102E] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
             Versatile Application
           </span>

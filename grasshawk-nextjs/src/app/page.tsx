@@ -24,7 +24,7 @@ export default function HomePage() {
       <Testimonials />
 
       {/* CTA Footer Banner */}
-      <section className="py-20 bg-gradient-to-br from-[#1A1A1A] to-[#2d0a12] text-white text-center">
+      <section className="py-10 bg-gradient-to-br from-[#1A1A1A] to-[#2d0a12] text-white text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="inline-block bg-[#C8102E]/20 border border-[#C8102E]/30 rounded-full px-4 py-1.5 text-sm font-semibold text-[#ff8099] mb-6">
             🍁 Made for Canadian Conditions

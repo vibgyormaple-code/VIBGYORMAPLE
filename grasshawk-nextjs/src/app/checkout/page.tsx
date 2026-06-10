@@ -3,12 +3,11 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Loader2, CheckCircle, CreditCard, Package, User, ChevronRight } from 'lucide-react';
+import { Loader2, CheckCircle, Mail, Package, User, ChevronRight } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
-import OTPModal from '@/components/ui/OTPModal';
 
 // Steps
-const STEPS = ['Customer Info', 'Verify Email', 'Payment', 'Confirmation'];
+const STEPS = ['Customer Info', 'Confirm Request', 'Confirmation'];
 
 interface CustomerInfo {
   name: string;
@@ -33,9 +32,6 @@ export default function CheckoutPage() {
     line1: '', city: '', province: 'Alberta', postalCode: '',
   });
   const [errors, setErrors] = useState<Partial<CustomerInfo>>({});
-  const [showOTP, setShowOTP] = useState(false);
-  const [otpSending, setOtpSending] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState<'razorpay' | 'cod'>('cod');
   const [orderLoading, setOrderLoading] = useState(false);
   const [orderId, setOrderId] = useState('');
 
@@ -49,7 +45,7 @@ export default function CheckoutPage() {
 
   // Redirect if cart is empty
   useEffect(() => {
-    if (items.length === 0 && step < 3) {
+    if (items.length === 0 && step < 2) {
       router.push('/shop');
     }
   }, [items, step, router]);
@@ -66,29 +62,11 @@ export default function CheckoutPage() {
     return Object.keys(e).length === 0;
   };
 
-  const handleNextStep = async () => {
+  const handleNextStep = () => {
     if (step === 0) {
       if (!validate()) return;
-      // Send OTP
-      setOtpSending(true);
-      try {
-        await fetch('/api/send-otp', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: info.email }),
-        });
-        setShowOTP(true);
-      } catch {
-        alert('Failed to send verification code. Please try again.');
-      } finally {
-        setOtpSending(false);
-      }
+      setStep(1); // Proceed directly to confirmation request step
     }
-  };
-
-  const handleOTPVerified = () => {
-    setShowOTP(false);
-    setStep(2);
   };
 
   const handlePlaceOrder = async () => {
@@ -105,8 +83,8 @@ export default function CheckoutPage() {
         tax: taxAmt,
         shipping: shipAmt,
         total: totalAmt,
-        paymentMethod,
-        paymentStatus: paymentMethod === 'cod' ? 'pending' : 'pending',
+        paymentMethod: 'supplier_invoice',
+        paymentStatus: 'pending',
       };
 
       const res = await fetch('/api/orders', {
@@ -119,9 +97,9 @@ export default function CheckoutPage() {
       if (res.ok && data.order) {
         setOrderId(data.order._id);
         clearCart();
-        setStep(3);
+        setStep(2); // Go to final confirmation screen
       } else {
-        alert(data.message || 'Failed to place order. Please try again.');
+        alert(data.message || 'Failed to place order request. Please try again.');
       }
     } catch {
       alert('Something went wrong. Please try again.');
@@ -264,60 +242,42 @@ export default function CheckoutPage() {
 
                 <button
                   onClick={handleNextStep}
-                  disabled={otpSending}
                   id="checkout-continue-btn"
-                  className="mt-8 w-full bg-[#C8102E] text-white py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-[#a50d26] transition-all disabled:opacity-60"
+                  className="mt-8 w-full bg-[#C8102E] text-white py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-[#a50d26] transition-all"
                 >
-                  {otpSending && <Loader2 size={18} className="animate-spin" />}
-                  {otpSending ? 'Sending Verification Code...' : 'Continue to Verify Email'}
+                  Continue to Confirm Request
                   <ChevronRight size={18} />
                 </button>
               </div>
             )}
 
-            {/* Step 2: Payment */}
-            {step === 2 && (
+            {/* Step 1: Confirm Order Request */}
+            {step === 1 && (
               <div className="bg-white rounded-2xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
                 <div className="flex items-center gap-3 mb-6">
-                  <CreditCard size={22} className="text-[#C8102E]" />
-                  <h2 className="text-xl font-black text-[#1A1A1A]">Payment Method</h2>
+                  <Mail size={22} className="text-[#C8102E]" />
+                  <h2 className="text-xl font-black text-[#1A1A1A]">Confirm Order Request</h2>
                 </div>
 
-                <div className="space-y-3 mb-8">
-                  {[
-                    { id: 'razorpay', label: 'Razorpay', sub: 'Credit/Debit Card, UPI, Net Banking', icon: '💳' },
-                    { id: 'cod', label: 'Cash on Delivery', sub: 'Pay when your order arrives', icon: '📦' },
-                  ].map(({ id, label, sub, icon }) => (
-                    <label
-                      key={id}
-                      htmlFor={`payment-${id}`}
-                      className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                        paymentMethod === id ? 'border-[#C8102E] bg-[#C8102E]/5' : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        id={`payment-${id}`}
-                        name="paymentMethod"
-                        value={id}
-                        checked={paymentMethod === id as 'razorpay' | 'cod'}
-                        onChange={() => setPaymentMethod(id as 'razorpay' | 'cod')}
-                        className="accent-[#C8102E]"
-                      />
-                      <span className="text-2xl">{icon}</span>
-                      <div>
-                        <div className="font-bold text-[#1A1A1A]">{label}</div>
-                        <div className="text-sm text-gray-500">{sub}</div>
-                      </div>
-                    </label>
-                  ))}
+                <div className="bg-red-50/60 border border-[#C8102E]/10 rounded-2xl p-6 mb-8">
+                  <h3 className="font-bold text-[#1A1A1A] text-sm mb-2 flex items-center gap-2">
+                    📬 Direct Supplier Invoice &amp; Support
+                  </h3>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    No payment gateway is integrated. Your finalized shopping cart request will be emailed directly to our headquarters. 
+                    <strong> Vibgyor Maple Inc.</strong> (our supplier) will contact you directly via phone or email to coordinate shipping details and complete your invoice.
+                  </p>
                 </div>
 
-                {paymentMethod === 'razorpay' && (
-                  <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6 text-sm text-blue-700">
-                    <p>🔒 You&apos;ll be redirected to Razorpay&apos;s secure payment gateway to complete your payment.</p>
+                <div className="space-y-4 mb-8 bg-[#f8f8f8] rounded-xl p-5 border border-gray-100">
+                  <h4 className="font-bold text-xs text-[#1A1A1A] uppercase tracking-wider">Contact &amp; Delivery Information</h4>
+                  <div className="text-xs text-gray-600 space-y-1 leading-relaxed">
+                    <p><strong>Name:</strong> {info.name}</p>
+                    <p><strong>Phone:</strong> {info.phone}</p>
+                    <p><strong>Email:</strong> {info.email}</p>
+                    <p><strong>Address:</strong> {info.line1}, {info.city}, {info.province} {info.postalCode}, Canada</p>
                   </div>
-                )}
+                </div>
 
                 <button
                   onClick={handlePlaceOrder}
@@ -326,26 +286,29 @@ export default function CheckoutPage() {
                   className="w-full bg-[#C8102E] text-white py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-[#a50d26] transition-all disabled:opacity-60"
                 >
                   {orderLoading && <Loader2 size={18} className="animate-spin" />}
-                  {orderLoading ? 'Placing Order...' : `Place Order — $${totalAmt.toFixed(2)} CAD`}
+                  {orderLoading ? 'Sending Request...' : `Send Order Request — $${totalAmt.toFixed(2)} CAD`}
                 </button>
               </div>
             )}
 
-            {/* Step 3: Confirmation */}
-            {step === 3 && (
+            {/* Step 2: Confirmation */}
+            {step === 2 && (
               <div className="bg-white rounded-2xl p-10 text-center shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
                 <CheckCircle size={72} className="text-green-500 mx-auto mb-5" />
-                <h2 className="text-3xl font-black text-[#1A1A1A] mb-3">Order Confirmed! 🎉</h2>
+                <h2 className="text-3xl font-black text-[#1A1A1A] mb-3">Order Request Sent! 🎉</h2>
                 <p className="text-gray-500 mb-2">Thank you, <strong>{info.name}</strong>!</p>
                 {orderId && (
                   <p className="text-sm text-gray-400 mb-6">
-                    Order ID: <span className="font-bold text-[#1A1A1A]">#{orderId}</span>
+                    Request ID: <span className="font-bold text-[#1A1A1A]">#{orderId}</span>
                   </p>
                 )}
-                <p className="text-gray-500 text-sm mb-8 max-w-sm mx-auto leading-relaxed">
-                  A confirmation email with your order details has been sent to <strong>{info.email}</strong>.
-                  Your Grasshawk KLAW will be shipped within 1–2 business days.
-                </p>
+                <div className="bg-green-50/60 border border-green-200/50 rounded-2xl p-6 mb-8 max-w-md mx-auto">
+                  <h3 className="font-black text-green-800 text-lg mb-2">Our team will reach you soon!</h3>
+                  <p className="text-green-700 text-sm leading-relaxed">
+                    We have successfully received your order request. A confirmation email with the summary has been sent to <strong>{info.email}</strong>. 
+                    Our sales team will contact you directly to arrange invoice details and shipping.
+                  </p>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Link href="/" className="bg-[#C8102E] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#a50d26] transition-all">
                     Back to Home
@@ -359,7 +322,7 @@ export default function CheckoutPage() {
           </div>
 
           {/* Order Summary sidebar */}
-          {step < 3 && (
+          {step < 2 && (
             <div className="lg:col-span-1">
               <div className="bg-white rounded-2xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.08)] sticky top-24">
                 <h3 className="font-black text-[#1A1A1A] mb-5 flex items-center gap-2">
@@ -391,15 +354,6 @@ export default function CheckoutPage() {
           )}
         </div>
       </div>
-
-      {/* OTP Modal */}
-      {showOTP && (
-        <OTPModal
-          email={info.email}
-          onVerified={handleOTPVerified}
-          onClose={() => setShowOTP(false)}
-        />
-      )}
     </div>
   );
 }

@@ -52,10 +52,10 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 bg-white overflow-hidden">
+    <section id="testimonials" className="py-10 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <span className="inline-block bg-[#C8102E]/10 text-[#C8102E] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
             Customer Stories
           </span>
@@ -82,7 +82,7 @@ export default function Testimonials() {
         </div>
 
         {/* Stats bar */}
-        <div className="mt-16 bg-gradient-to-r from-[#C8102E] to-[#a50d26] rounded-2xl p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
+        <div className="mt-8 bg-gradient-to-r from-[#C8102E] to-[#a50d26] rounded-2xl p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
           {[
             { value: '4.9/5', label: 'Average Rating' },
             { value: '10,000+', label: 'Happy Customers' },

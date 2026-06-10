@@ -16,9 +16,11 @@ const navLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const itemCount = useCartStore((s) => s.itemCount());
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -70,10 +72,9 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-semibold text-[#1A1A1A] hover:text-[#C8102E] transition-colors relative group"
+                  className="text-sm font-semibold text-[#1A1A1A] hover:text-[#C8102E] transition-colors pb-0.5 border-b-2 border-transparent hover:border-[#C8102E]"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#C8102E] group-hover:w-full transition-all duration-300" />
                 </Link>
               ))}
             </div>
@@ -87,7 +88,7 @@ export default function Navbar() {
                 aria-label="Cart"
               >
                 <ShoppingCart size={22} className="text-[#1A1A1A]" />
-                {itemCount > 0 && (
+                {mounted && itemCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-[#C8102E] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
                     {itemCount > 9 ? '9+' : itemCount}
                   </span>

@@ -69,7 +69,7 @@ export default function Footer() {
               </a>
               <div className="flex items-start gap-2 text-gray-400">
                 <MapPin size={14} className="mt-0.5 flex-shrink-0" />
-                <span>VIBGYOR Maple Inc., AB, Canada</span>
+                <span>Vibgyor Maple Inc., Calgary, AB, Canada<br />GST: 767786213RT0001</span>
               </div>
             </div>
 
@@ -118,7 +118,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <p>© {new Date().getFullYear()} VIBGYOR Maple Inc. All rights reserved. Grasshawk KLAW™</p>
+          <p>© {new Date().getFullYear()} Vibgyor Maple Inc. All rights reserved. Grasshawk™ &amp; Grasshawk KLAW™</p>
           <div className="flex gap-4">
             <span>Made in India | Marketed in Canada 🍁</span>
             <span>·</span>
