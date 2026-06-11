@@ -27,7 +27,6 @@ const featureIcons = [
 const galleryImages = [
   { src: '/assets/new_moletrap.jpg', alt: 'Grasshawk KLAW Mole Trap - Front View' },
   { src: '/assets/moletrap.png', alt: 'Grasshawk KLAW Mole Trap - Diagram' },
-  { src: '/assets/trap.png', alt: 'Grasshawk KLAW - Step to Set' },
 ];
 
 const hotspots = [
