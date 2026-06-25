@@ -5,7 +5,7 @@ import TestimonialCard from '@/components/ui/TestimonialCard';
 const testimonials = [
   {
     name: 'Mike Henderson',
-    location: 'Edmonton, AB',
+    location: 'Vancouver, BC',
     role: 'Homeowner',
     rating: 5,
     review:
@@ -14,7 +14,7 @@ const testimonials = [
   },
   {
     name: 'Sarah Kowalski',
-    location: 'Saskatoon, SK',
+    location: 'Langley, BC',
     role: 'Market Gardener',
     rating: 5,
     review:
@@ -32,7 +32,7 @@ const testimonials = [
   },
   {
     name: 'Priya Sharma',
-    location: 'Red Deer, AB',
+    location: 'Mississauga, ON',
     role: 'Golf Course Manager',
     rating: 5,
     review:
@@ -41,7 +41,7 @@ const testimonials = [
   },
   {
     name: 'Tom Buchanan',
-    location: 'Lethbridge, AB',
+    location: 'Toronto, ON',
     role: 'Farmer',
     rating: 4,
     review:
