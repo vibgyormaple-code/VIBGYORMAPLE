@@ -9,9 +9,9 @@ import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Grasshawk KLAW — Fast, Safe & Eco-Friendly Mole Trap | Canada',
+  title: 'Vibgyor Maple — #1 Mole Claws in Canada | Grasshawk KLAW',
   description:
-    'Protect your lawn and garden with the Grasshawk KLAW mole trap. Chemical-free, pet-friendly, reusable. $29 CAD. Ships across Canada.',
+    'Looking for the best mole claws in Canada? The Grasshawk KLAW features heavy-duty steel claws for fast, chemical-free mole control. Ships across Canada.',
 };
 
 export default function HomePage() {

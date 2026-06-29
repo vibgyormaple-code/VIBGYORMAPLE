@@ -35,10 +35,8 @@ const featureIcons = [
   { src: '/assets/durableandheavyduty.png', icon: Weight, text: 'Heavy-Duty Construction' },
 ];
 
-// Gallery images
 const galleryImages = [
   { src: '/assets/new_moletrap.jpg', alt: 'Grasshawk KLAW - Product View' },
-  { src: '/assets/moletrap.png', alt: 'Grasshawk KLAW - Technical Drawing' },
 ];
 
 const hotspots = [
@@ -201,22 +199,24 @@ export default function ShopPage() {
               </div>
 
               {/* Thumbnails */}
-              <div className="flex gap-3 mt-5">
-                {galleryImages.map((img, i) => (
-                  <button
-                    key={img.src}
-                    onClick={() => setActiveImg(i)}
-                    className={`w-16 h-16 rounded-xl border-2 overflow-hidden bg-white transition-all ${
-                      activeImg === i ? 'border-[#C8102E] scale-105 shadow-md' : 'border-gray-200 hover:border-gray-400'
-                    }`}
-                    aria-label={img.alt}
-                  >
-                    <div className="relative w-full h-full">
-                      <Image src={img.src} alt={img.alt} fill className="object-contain p-1.5" sizes="64px" />
-                    </div>
-                  </button>
-                ))}
-              </div>
+              {galleryImages.length > 1 && (
+                <div className="flex gap-3 mt-5">
+                  {galleryImages.map((img, i) => (
+                    <button
+                      key={img.src}
+                      onClick={() => setActiveImg(i)}
+                      className={`w-16 h-16 rounded-xl border-2 overflow-hidden bg-white transition-all ${
+                        activeImg === i ? 'border-[#C8102E] scale-105 shadow-md' : 'border-gray-200 hover:border-gray-400'
+                      }`}
+                      aria-label={img.alt}
+                    >
+                      <div className="relative w-full h-full">
+                        <Image src={img.src} alt={img.alt} fill className="object-contain p-1.5" sizes="64px" />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Info panel */}

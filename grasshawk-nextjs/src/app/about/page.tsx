@@ -17,12 +17,6 @@ const values = [
   { icon: Target, title: 'Continuous Innovation', description: 'We improve our products based on real-world feedback from homeowners and gardeners.' },
 ];
 
-const ctaCards = [
-  { title: 'Become a Distributor', description: 'Partner with Vibgyor Maple to bring Grasshawk products to more Canadians.', href: '/contact?type=distributor', cta: 'Apply Now' },
-  { title: 'Contact Sales', description: 'Get pricing for bulk orders and commercial packages.', href: '/contact?type=general', cta: 'Talk to Sales' },
-  { title: 'Request Demo', description: 'See the Grasshawk KLAW™ in action with a live demonstration.', href: '/contact?type=product_info', cta: 'Request Demo' },
-  { title: 'Get a Quote', description: 'Custom pricing for large agricultural or commercial needs.', href: '/contact?type=partnership', cta: 'Get Quote' },
-];
 
 export default function AboutPage() {
   return (
@@ -105,6 +99,19 @@ export default function AboutPage() {
                   <div className="text-xs text-gray-500 mt-0.5 font-medium">{label}</div>
                 </div>
               ))}
+            </div>
+            <div className="bg-[#f8f8f8] rounded-2xl p-5 border border-gray-100">
+              <div className="flex items-center gap-2 mb-3">
+                <MapPin size={18} className="text-[#C8102E]" />
+                <h4 className="font-bold text-[#1A1A1A] text-sm">Serviceable Locations</h4>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {['Vancouver, BC', 'Langley, BC', 'Calgary, AB', 'Mississauga, ON', 'Toronto, ON'].map((loc) => (
+                  <span key={loc} className="bg-[#C8102E]/10 text-[#C8102E] px-3 py-1 rounded-full text-xs font-semibold">
+                    {loc}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -323,7 +330,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-3 gap-5">
             {[
               { label: 'Head Operations', address: 'Vibgyor Maple Inc.\nCalgary, AB, Canada\nGST: 767786213RT0001', icon: <MapPin size={20} /> },
-              { label: 'Support & Operations', address: 'support.grasshawk@vibgormaple.com\n+1 639 590 9729', icon: <Phone size={20} /> },
+              { label: 'Support & Operations', address: 'support.grasshawk@vibgyormaple.com\n+1 639 590 9729', icon: <Phone size={20} /> },
               { label: 'Manufacturing Unit', address: 'Manufacturing Partner\nIndia (Country of Origin)', icon: <Factory size={20} /> },
             ].map(({ label, address, icon }) => (
               <div key={label} className="bg-[#f8f8f8] rounded-2xl p-5">
@@ -340,7 +347,7 @@ export default function AboutPage() {
               <h4 className="font-bold text-[#1A1A1A] text-sm">Product Availability</h4>
             </div>
             <div className="flex flex-wrap gap-2">
-              {['Alberta', 'British Columbia', 'Ontario', 'Saskatchewan', 'Manitoba', 'Quebec', 'All Canadian Provinces (Online)'].map((loc) => (
+              {['Vancouver, BC', 'Langley, BC', 'Mississauga, ON', 'Toronto, ON', 'Calgary, AB'].map((loc) => (
                 <span key={loc} className="bg-[#C8102E]/10 text-[#C8102E] px-3 py-1 rounded-full text-xs font-semibold">
                   {loc}
                 </span>
@@ -360,19 +367,17 @@ export default function AboutPage() {
             <h2 className="text-2xl font-black text-[#1A1A1A] mb-2">Let&apos;s Work Together</h2>
             <p className="text-gray-500 text-sm">Explore partnership and business opportunities with Vibgyor Maple Inc.</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {ctaCards.map(({ title, description, href, cta }) => (
-              <div key={title} className="bg-white rounded-2xl p-5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col">
-                <h4 className="font-bold text-[#1A1A1A] mb-1.5 text-sm">{title}</h4>
-                <p className="text-gray-500 text-xs flex-1 mb-4 leading-relaxed">{description}</p>
-                <Link
-                  href={href}
-                  className="block text-center bg-[#C8102E] text-white py-2.5 rounded-xl text-xs font-bold hover:bg-[#a50d26] transition-all"
-                >
-                  {cta}
-                </Link>
-              </div>
-            ))}
+          <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-[0_2px_12px_rgba(0,0,0,0.06)] text-center border border-gray-100">
+            <h4 className="font-bold text-[#1A1A1A] mb-3 text-lg">Ready to Partner With Us?</h4>
+            <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+              Whether you want to become a distributor, request a demo, or get a custom quote for bulk orders, our team is ready to assist you.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block bg-[#C8102E] text-white px-8 py-3 rounded-xl text-sm font-bold hover:bg-[#a50d26] transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>

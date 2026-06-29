@@ -32,12 +32,12 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 bg-[#C8102E]/20 border border-[#C8102E]/30 rounded-full px-4 py-1.5 mb-6 text-sm font-semibold text-[#ff8099]">
             <MapPin size={16} /> Trusted by Canadian Homeowners
           </div>
-          <h1 className="text-4xl font-black mb-3 leading-tight">
-            Grasshawk<br />
-            <span className="text-[#C8102E]">KLAW</span>
+          <h1 className="mb-3">
+            <span className="block text-2xl font-bold text-white mb-1">Vibgyor Maple</span>
+            <span className="block text-4xl font-black text-[#C8102E] leading-tight">Grasshawk KLAW</span>
           </h1>
-          <p className="text-xl font-semibold text-gray-300 mb-2">Fast, Safe &amp; Eco-Friendly</p>
-          <p className="text-gray-400 text-sm mb-8">You grow it, we protect it.</p>
+          <p className="text-xl font-semibold text-gray-300 mb-6">Fast, Safe &amp; Eco-Friendly</p>
+          
 
           <div className="flex flex-col gap-3">
 
@@ -73,18 +73,19 @@ export default function HeroSection() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 leading-none tracking-tight">
-            Grass<span className="text-[#C8102E]">hawk</span>
-            <br />
-            <span className="text-[#C8102E]">KLAW</span>
+          <h1 className="mb-4">
+            <span className="block text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">Vibgyor Maple</span>
+            <span className="block text-6xl lg:text-7xl xl:text-8xl font-black text-[#C8102E] leading-none tracking-tight">Grasshawk KLAW</span>
           </h1>
 
-          <p className="text-2xl font-semibold text-gray-200 mb-3">
+          <p className="text-2xl font-semibold text-gray-200 mb-4">
             Fast, Safe &amp; Eco-Friendly
           </p>
-          <p className="text-lg text-gray-400 mb-10">
-            You grow it, we protect it. The professional mole trap for<br className="hidden xl:block" /> Canadian homes, farms, and gardens.
+
+          <p className="text-lg text-gray-400 mb-6">
+            The professional mole trap for<br className="hidden xl:block" /> Canadian homes, farms, and gardens.
           </p>
+
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-4">

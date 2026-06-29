@@ -13,7 +13,7 @@ interface BenefitCardProps {
 export default function BenefitCard({ icon, iconImage, title, description, accent }: BenefitCardProps) {
   return (
     <div
-      className={`group rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 hover:-translate-y-1 ${
+      className={`group rounded-2xl p-6 flex flex-col h-full w-full gap-4 transition-all duration-300 hover:-translate-y-1 ${
         accent
           ? 'bg-[#C8102E] text-white shadow-[0_8px_24px_rgba(200,16,46,0.3)] hover:shadow-[0_12px_32px_rgba(200,16,46,0.4)]'
           : 'bg-[#f8f8f8] hover:bg-white hover:shadow-lg'

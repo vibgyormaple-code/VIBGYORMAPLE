@@ -14,14 +14,11 @@ const footerLinks = {
   ],
   Products: [
     { label: 'Grasshawk KLAW', href: '/shop' },
-    { label: 'Add to Cart', href: '/cart' },
-    { label: 'Checkout', href: '/checkout' },
+    { label: 'Cart', href: '/cart' },
   ],
   Support: [
     { label: 'How to Use', href: '/#setup-guide' },
-    { label: 'Warranty Info', href: '/about#warranty' },
     { label: 'Distributor Inquiry', href: '/contact' },
-    { label: 'Bulk Orders', href: '/contact' },
   ],
 };
 
@@ -34,27 +31,29 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-4 group">
-              <div className="relative w-10 h-10 flex-shrink-0">
+              <div className="relative w-12 h-12 flex-shrink-0 bg-white rounded-lg p-1 flex items-center justify-center shadow-sm">
                 <Image
                   src="/assets/logo.png"
                   alt="Grasshawk Logo"
                   fill
-                  className="object-contain brightness-0 invert group-hover:scale-110 transition-transform duration-300"
-                  sizes="40px"
+                  className="object-contain group-hover:scale-110 transition-transform duration-300 p-1"
+                  sizes="48px"
                 />
               </div>
               <div>
-                <div className="font-black text-white leading-tight text-lg">Grasshawk</div>
-                <div className="text-[#C8102E] text-xs font-semibold tracking-widest uppercase">KLAW</div>
+                <div className="font-black text-white leading-tight text-lg">Vibgyor Maple Inc.</div>
+                <div className="text-[#C8102E] text-xs font-semibold tracking-widest uppercase">Grasshawk Product</div>
               </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Fast, Safe &amp; Eco-Friendly mole control for Canadian homeowners, farmers,
               and landscapers. No chemicals. No poisons. Just results.
             </p>
-            <p className="text-xs text-gray-500 mb-4 italic">
-              &quot;You grow it, we protect it.&quot;
-            </p>
+            <div className="bg-[#C8102E]/10 border border-[#C8102E]/30 inline-block px-4 py-2 rounded-xl mb-6 shadow-sm">
+              <p className="text-sm text-[#ff8099] font-bold italic tracking-wide">
+                &quot;You grow it, we protect it.&quot;
+              </p>
+            </div>
 
             {/* Contact info */}
             <div className="space-y-2 text-sm">
@@ -64,8 +63,8 @@ export default function Footer() {
               <a href="mailto:contact.grasshawk@gmail.com" className="flex items-center gap-2 text-gray-400 hover:text-[#C8102E] transition-colors">
                 <Mail size={14} /> contact.grasshawk@gmail.com
               </a>
-              <a href="https://www.grasshawkca.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-[#C8102E] transition-colors">
-                <Globe size={14} /> www.grasshawkca.com
+              <a href="https://www.vibgyormaple.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-[#C8102E] transition-colors">
+                <Globe size={14} /> www.vibgyormaple.com
               </a>
               <div className="flex items-start gap-2 text-gray-400">
                 <MapPin size={14} className="mt-0.5 flex-shrink-0" />
@@ -73,17 +72,20 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Social links */}
+
+
+            {/* Social & Maps links */}
             <div className="flex gap-3 mt-6">
               {[
-                { icon: Share2, label: 'Instagram', href: '#' },
-                { icon: ExternalLink, label: 'Facebook', href: '#' },
                 { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/16395909729' },
               ].map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
+                  title={label}
                   className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-[#C8102E] transition-all duration-200 hover:scale-110"
                 >
                   <Icon size={16} />

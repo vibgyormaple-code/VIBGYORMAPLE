@@ -67,8 +67,8 @@ export default function ContactPage() {
                 {
                   icon: Globe,
                   title: 'Website',
-                  value: 'www.grasshawkca.com',
-                  href: 'https://www.grasshawkca.com',
+                  value: 'www.vibgyormaple.com',
+                  href: 'https://www.vibgyormaple.com',
                   sub: 'Official product website',
                   color: 'text-[#C8102E]',
                   bg: 'bg-[#C8102E]/5',
@@ -111,8 +111,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-gray-400 text-xs uppercase font-bold tracking-wider mb-0.5">Support Email</p>
-                  <a href="mailto:support.grasshawk@vibgormaple.com" className="font-semibold text-[#C8102E] hover:underline">
-                    support.grasshawk@vibgormaple.com
+                  <a href="mailto:support.grasshawk@vibgyormaple.com" className="font-semibold text-[#C8102E] hover:underline">
+                    support.grasshawk@vibgyormaple.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-gray-400 pt-2 border-t border-gray-100">

@@ -162,7 +162,7 @@ export async function sendOrderConfirmation(order: {
             </tfoot>
           </table>
           <div style="background:#f0fff0;border:1px solid #00aa44;border-radius:8px;padding:16px;margin-top:24px;">
-            <p style="margin:0;color:#006622;">&#10003; We'll notify you when your order ships. For questions, email <a href="mailto:support.grasshawk@vibgormaple.com">support.grasshawk@vibgormaple.com</a></p>
+            <p style="margin:0;color:#006622;">&#10003; We'll notify you when your order ships. For questions, email <a href="mailto:support.grasshawk@vibgyormaple.com">support.grasshawk@vibgyormaple.com</a></p>
           </div>
         </div>
         <div style="background:#1a1a1a;padding:16px;text-align:center;color:#aaa;font-size:12px;">

@@ -58,10 +58,7 @@ export default function Navbar() {
               </div>
               <div>
                 <div className="font-black text-[#1A1A1A] leading-tight text-lg tracking-tight">
-                  Grasshawk
-                </div>
-                <div className="text-[#C8102E] text-xs font-semibold tracking-widest uppercase leading-tight">
-                  KLAW
+                  Vibgyor Maple
                 </div>
               </div>
             </Link>

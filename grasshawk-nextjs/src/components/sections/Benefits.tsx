@@ -36,40 +36,34 @@ export default function Benefits() {
   return (
     <section id="benefits" className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left — product image display */}
-          <div className="relative rounded-3xl overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.12)] aspect-[4/3] group">
-            <Image
-              src="/assets/new_moletrap.jpg"
-              alt="Grasshawk KLAW Mole Trap"
-              fill
-              className="object-contain bg-gradient-to-br from-[#f8f8f8] to-[#efefef] p-8 group-hover:scale-105 transition-transform duration-700"
-              sizes="(max-width: 1024px) 100vw, 600px"
-            />
-          </div>
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="inline-block bg-[#C8102E]/10 text-[#C8102E] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+            Why KLAW?
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] mb-3 leading-tight">
+            Built for Canadian Conditions
+          </h2>
+          <p className="text-gray-500 text-base mb-10 leading-relaxed max-w-2xl mx-auto">
+            Every feature of the Grasshawk KLAW was designed to make mole control simple, safe, and sustainable — no matter where in Canada you are.
+          </p>
 
-          {/* Right — Benefits grid */}
-          <div>
-            <span className="inline-block bg-[#C8102E]/10 text-[#C8102E] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
-              Why KLAW?
-            </span>
-            <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] mb-3 leading-tight">
-              Built for Canadian<br />Conditions
-            </h2>
-            <p className="text-gray-500 text-base mb-8 leading-relaxed">
-              Every feature of the Grasshawk KLAW was designed to make mole control simple, safe, and sustainable — no matter where in Canada you are.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {benefits.map((b) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-6 text-left">
+            {benefits.map((b, i) => (
+              <div 
+                key={b.title} 
+                className={`
+                  sm:col-span-1 md:col-span-2 flex h-full
+                  ${i === 3 ? 'md:col-start-2' : ''}
+                  ${i === 4 ? 'md:col-start-4' : ''}
+                `}
+              >
                 <BenefitCard
-                  key={b.title}
                   iconImage={b.iconImage}
                   title={b.title}
                   description={b.description}
                 />
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

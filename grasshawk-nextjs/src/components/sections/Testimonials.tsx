@@ -81,20 +81,7 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Stats bar */}
-        <div className="mt-8 bg-gradient-to-r from-[#C8102E] to-[#a50d26] rounded-2xl p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
-          {[
-            { value: '4.9/5', label: 'Average Rating' },
-            { value: '10,000+', label: 'Happy Customers' },
-            { value: '98%', label: 'Recommend Us' },
-            { value: '1 Year', label: 'Warranty' },
-          ].map(({ value, label }) => (
-            <div key={label}>
-              <div className="text-3xl font-black mb-1">{value}</div>
-              <div className="text-white/70 text-sm uppercase tracking-wider font-medium">{label}</div>
-            </div>
-          ))}
-        </div>
+
       </div>
     </section>
   );

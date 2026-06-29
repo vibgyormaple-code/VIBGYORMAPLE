@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShoppingCart, X, ChevronRight, Check, Star, ShieldCheck, Sparkles } from 'lucide-react';
+import { ShoppingCart, X, ChevronRight, Check, Star, ShieldCheck, Sparkles, MapPin } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 
 const specs = [
@@ -26,7 +26,6 @@ const featureIcons = [
 // Gallery images for the product
 const galleryImages = [
   { src: '/assets/new_moletrap.jpg', alt: 'Grasshawk KLAW Mole Trap - Front View' },
-  { src: '/assets/moletrap.png', alt: 'Grasshawk KLAW Mole Trap - Diagram' },
 ];
 
 const hotspots = [
@@ -173,25 +172,27 @@ export default function ProductShowcase() {
               </div>
 
               {/* Thumbnail strip */}
-              <div className="flex gap-3 mt-4 justify-center">
-                {galleryImages.map((img, i) => (
-                  <button
-                    key={img.src}
-                    onClick={(e) => { e.stopPropagation(); setActiveImg(i); }}
-                    className={`w-16 h-16 rounded-xl border-2 overflow-hidden transition-all bg-[#f8f8f8] flex items-center justify-center ${
-                      activeImg === i ? 'border-[#C8102E] scale-105' : 'border-gray-200 hover:border-gray-400'
-                    }`}
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      width={60}
-                      height={60}
-                      className="object-contain w-full h-full p-1"
-                    />
-                  </button>
-                ))}
-              </div>
+              {galleryImages.length > 1 && (
+                <div className="flex gap-3 mt-4 justify-center">
+                  {galleryImages.map((img, i) => (
+                    <button
+                      key={img.src}
+                      onClick={(e) => { e.stopPropagation(); setActiveImg(i); }}
+                      className={`w-16 h-16 rounded-xl border-2 overflow-hidden transition-all bg-[#f8f8f8] flex items-center justify-center ${
+                        activeImg === i ? 'border-[#C8102E] scale-105' : 'border-gray-200 hover:border-gray-400'
+                      }`}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        width={60}
+                        height={60}
+                        className="object-contain w-full h-full p-1"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
 
               {/* Click hint */}
               <div className="absolute top-4 right-4 bg-[#C8102E] text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -255,13 +256,28 @@ export default function ProductShowcase() {
               </div>
 
               {/* 100% Satisfaction & Canadian Shipping Guarantee Box */}
-              <div className="bg-red-50/50 border border-[#C8102E]/10 rounded-2xl p-6 mb-8 flex items-start gap-4">
+              <div className="bg-red-50/50 border border-[#C8102E]/10 rounded-2xl p-6 mb-6 flex items-start gap-4">
                 <ShieldCheck size={28} className="text-[#C8102E] mt-0.5" />
                 <div>
                   <h4 className="font-bold text-[#1A1A1A] text-sm mb-1">Grasshawk Canadian Guarantee</h4>
                   <p className="text-gray-500 text-xs leading-relaxed">
                     Operated by VIBGYOR Maple Inc. in Alberta. Ships to all Canadian provinces within 2–4 business days. Free shipping on all orders over $100 CAD.
                   </p>
+                </div>
+              </div>
+
+              {/* Product Availability */}
+              <div className="bg-[#f8f8f8] rounded-2xl p-6 mb-8 border border-gray-100">
+                <div className="flex items-center gap-2 mb-3">
+                  <MapPin size={16} className="text-[#C8102E]" />
+                  <h4 className="font-bold text-[#1A1A1A] text-sm">Product Availability</h4>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {['Vancouver, BC', 'Langley, BC', 'Calgary, AB', 'Mississauga, ON', 'Toronto, ON'].map((loc) => (
+                    <span key={loc} className="bg-[#C8102E]/10 text-[#C8102E] px-3 py-1 rounded-full text-xs font-semibold">
+                      {loc}
+                    </span>
+                  ))}
                 </div>
               </div>
 

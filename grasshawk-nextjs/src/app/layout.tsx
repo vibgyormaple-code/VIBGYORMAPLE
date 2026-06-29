@@ -19,33 +19,33 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Grasshawk KLAW — Fast, Safe & Eco-Friendly Mole Trap | Canada',
-    template: '%s | Grasshawk KLAW',
+    default: 'Vibgyor Maple — #1 Mole Claws in Canada | Grasshawk KLAW',
+    template: '%s | Vibgyor Maple',
   },
   description:
-    'The Grasshawk KLAW mole trap — professional-grade, pet-friendly, chemical-free mole control for Canadian homeowners, farms, and gardens. $29 CAD. Ships across Canada.',
+    'Looking for the best mole claws in Canada? The Grasshawk KLAW mole trap features heavy-duty steel claws for fast, chemical-free mole control. Ships across Canada.',
   keywords: [
-    'mole trap', 'mole catcher', 'mole control', 'Canada mole trap',
-    'Grasshawk KLAW', 'VIBGYOR Maple', 'eco-friendly mole trap',
-    'pet safe mole trap', 'garden pest control Canada',
+    'claws in Canada', 'mole claws in Canada', 'best mole claws Canada',
+    'steel mole claws', 'Grasshawk KLAW', 'VIBGYOR Maple', 'mole trap Canada',
+    'eco-friendly mole trap', 'pet safe mole trap', 'heavy duty claws',
   ],
   authors: [{ name: 'VIBGYOR Maple Inc.' }],
   openGraph: {
     type: 'website',
     locale: 'en_CA',
-    url: 'https://www.grasshawkca.com',
-    siteName: 'Grasshawk KLAW',
-    title: 'Grasshawk KLAW — Fast, Safe & Eco-Friendly Mole Trap',
-    description: 'Professional mole trap for Canadian homeowners. Pet-friendly, chemical-free, $29 CAD.',
-    images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630, alt: 'Grasshawk KLAW Mole Trap' }],
+    url: 'https://www.vibgyormaple.com',
+    siteName: 'Vibgyor Maple',
+    title: 'Vibgyor Maple — #1 Mole Claws in Canada',
+    description: 'Looking for the best mole claws in Canada? Heavy-duty steel claws for fast, pet-friendly mole control. $29 CAD.',
+    images: [{ url: '/assets/og-image.jpg', width: 1200, height: 630, alt: 'Grasshawk KLAW Mole Claws' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Grasshawk KLAW — Mole Trap Canada',
-    description: 'Fast, Safe & Eco-Friendly mole control. $29 CAD. Free shipping over $100.',
+    title: 'Vibgyor Maple — Mole Claws Canada',
+    description: 'Heavy-duty steel claws for fast, chemical-free mole control in Canada. $29 CAD.',
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://www.grasshawkca.com' },
+  alternates: { canonical: 'https://www.vibgyormaple.com' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 priceCurrency: 'CAD',
                 price: '29.00',
                 availability: 'https://schema.org/InStock',
-                url: 'https://www.grasshawkca.com/shop',
+                url: 'https://www.vibgyormaple.com/shop',
               },
               aggregateRating: {
                 '@type': 'AggregateRating',
