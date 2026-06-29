@@ -20,6 +20,32 @@ export async function POST(req: NextRequest) {
       inquiryType: inquiryType || 'general'
     }).catch(console.error);
 
+    // Forward lead to Parul Chemicals Pipeline
+    try {
+      const pcRes = await fetch('https://pc-sales-8phu.onrender.com/api/leads/intake', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': 'test-lead-key-change-me'
+        },
+        body: JSON.stringify({
+          source_website: 'Grasshawk',
+          full_name: name,
+          email: email,
+          phone: phone,
+          company_name: companyName,
+          product_interest: inquiryType || 'general',
+          message: message
+        })
+      });
+
+      if (!pcRes.ok) {
+        console.error('Failed to push lead to Parul Chemicals Pipeline', await pcRes.text());
+      }
+    } catch (pcError) {
+      console.error('Error pushing lead to Parul Chemicals:', pcError);
+    }
+
     // Return a mock success response without saving to database
     return NextResponse.json({
       success: true,
