@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-API-Key': 'test-lead-key-change-me'
+          'X-API-Key': 'PCSALES'
         },
         body: JSON.stringify({
           source_website: 'vibgyor_maple',
