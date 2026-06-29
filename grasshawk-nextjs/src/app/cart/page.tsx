@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ShoppingBag, ArrowRight, Truck } from 'lucide-react';
+import { ShoppingBag, ArrowRight, Truck, MapPin, Lock, Leaf, Rocket } from 'lucide-react';
 import CartItem from '@/components/ui/CartItem';
 import { useCartStore } from '@/store/cartStore';
 
@@ -65,7 +65,7 @@ export default function CartPage() {
             {sub >= 100 && (
               <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3">
                 <Truck size={18} className="text-green-600 flex-shrink-0" />
-                <p className="text-sm font-semibold text-green-800">🎉 You&apos;ve unlocked <strong>free shipping!</strong></p>
+                <p className="text-sm font-semibold text-green-800 flex items-center gap-1.5"><Rocket size={16} /> You&apos;ve unlocked <strong>free shipping!</strong></p>
               </div>
             )}
           </div>
@@ -111,11 +111,10 @@ export default function CartPage() {
                 Continue Shopping
               </Link>
 
-              {/* Trust badges */}
-              <div className="mt-6 pt-5 border-t border-gray-100 grid grid-cols-3 gap-2 text-center">
-                {['🔒 Secure', '🍁 Canada', '♻️ Eco-Safe'].map((b) => (
-                  <div key={b} className="text-xs text-gray-400 font-medium">{b}</div>
-                ))}
+              <div className="mt-6 pt-5 border-t border-gray-100 grid grid-cols-3 gap-2 text-center text-xs text-gray-400 font-medium">
+                <div className="flex flex-col items-center gap-1"><Lock size={16} /> Secure</div>
+                <div className="flex flex-col items-center gap-1"><MapPin size={16} /> Canada</div>
+                <div className="flex flex-col items-center gap-1"><Leaf size={16} /> Eco-Safe</div>
               </div>
             </div>
           </div>

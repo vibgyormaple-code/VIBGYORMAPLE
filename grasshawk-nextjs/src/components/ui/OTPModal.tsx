@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { X, Loader2, CheckCircle } from 'lucide-react';
+import { X, Loader2, CheckCircle, Mail } from 'lucide-react';
 
 interface OTPModalProps {
   email: string;
@@ -123,7 +123,7 @@ export default function OTPModal({ email, otpToken, onTokenUpdate, onVerified, o
           <>
             <div className="text-center mb-8">
               <div className="w-14 h-14 bg-[#C8102E]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">📧</span>
+                <Mail size={28} className="text-[#C8102E]" />
               </div>
               <h2 className="text-xl font-bold text-[#1A1A1A] mb-1">Verify Your Email</h2>
               <p className="text-gray-500 text-sm">

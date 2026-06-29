@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShoppingCart, Shield, Leaf, Droplets, Weight, Star } from 'lucide-react';
+import { ShoppingCart, Shield, Leaf, Droplets, Weight, Star, MapPin, Check, Rocket } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 
 const product = {
@@ -117,7 +117,7 @@ export default function ShopPage() {
       {/* Page header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
         <h1 className="text-3xl md:text-4xl font-black text-[#1A1A1A]">Shop</h1>
-        <p className="text-gray-500 mt-1">Grasshawk KLAW Mole Trap — Ships across Canada 🍁</p>
+        <p className="text-gray-500 mt-1 flex items-center gap-1">Grasshawk KLAW Mole Trap — Ships across Canada <MapPin size={16} className="text-[#C8102E]" /></p>
       </div>
 
       {/* Product Detail */}
@@ -274,7 +274,7 @@ export default function ShopPage() {
                   }`}
                 >
                   <ShoppingCart size={20} />
-                  {added ? '✓ Added to Cart!' : 'Add to Cart'}
+                  {added ? <span className="flex items-center gap-1"><Check size={18} /> Added to Cart!</span> : 'Add to Cart'}
                 </button>
                 <Link
                   href="/cart"
@@ -329,7 +329,7 @@ export default function ShopPage() {
                       'Backed by a 1-year limited warranty',
                     ].map((b) => (
                       <li key={b} className="flex items-start gap-2">
-                        <span className="text-[#C8102E] font-bold">✓</span>{b}
+                        <Check size={16} className="text-[#C8102E] mt-0.5 flex-shrink-0" /> <span className="flex-1">{b}</span>
                       </li>
                     ))}
                   </ul>
@@ -372,7 +372,7 @@ export default function ShopPage() {
               {selectedTab === 'shipping' && (
                 <div className="space-y-4 text-sm text-gray-600 max-w-lg">
                   <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                    <p className="font-bold text-green-700 mb-1">🚀 Free Shipping on Orders Over $100</p>
+                    <p className="font-bold text-green-700 mb-1 flex items-center gap-1.5"><Rocket size={16} /> Free Shipping on Orders Over $100</p>
                     <p>Order 4+ units to qualify for free shipping to any Canadian province.</p>
                   </div>
                   <div className="space-y-2">

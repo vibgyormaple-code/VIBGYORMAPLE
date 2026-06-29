@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { ShoppingCart, Menu, X, Phone, Mail } from 'lucide-react';
+import { ShoppingCart, Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 
 const navLinks = [
@@ -34,7 +34,7 @@ export default function Navbar() {
           <span className="flex items-center gap-1"><Phone size={11} /> +1 639 590 9729</span>
           <span className="flex items-center gap-1"><Mail size={11} /> contact.grasshawk@gmail.com</span>
         </div>
-        <span className="font-medium">🍁 Made for Canada · VIBGYOR Maple Inc.</span>
+        <span className="font-medium flex items-center gap-1"><MapPin size={14} className="text-[#C8102E]" /> Made for Canada · VIBGYOR Maple Inc.</span>
       </div>
 
       {/* Main Navbar */}

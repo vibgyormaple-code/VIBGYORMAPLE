@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import Testimonials from '@/components/sections/Testimonials';
-import { Building2, Globe, Award, Heart, Users, Target, MapPin, FileCheck, ShieldCheck } from 'lucide-react';
+import { Building2, Globe, Award, Heart, Users, Target, MapPin, FileCheck, ShieldCheck, Package, Star, Phone, Factory, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Us — Vibgyor Maple Inc. & Grasshawk KLAW',
@@ -40,7 +40,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
         <div className="relative max-w-4xl mx-auto text-center">
           <span className="inline-block bg-[#C8102E]/80 border border-[#C8102E] rounded-full px-4 py-1 text-sm font-semibold text-white mb-4">
-            🍁 Vibgyor Maple Inc.
+            <MapPin size={12} className="inline mr-1 mb-0.5" /> Vibgyor Maple Inc.
           </span>
           <h1 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
             About <span className="text-[#C8102E]">Grasshawk</span>
@@ -94,10 +94,10 @@ export default function AboutPage() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               {[
-                { value: '10,000+', label: 'Units Sold', icon: '📦' },
-                { value: '4.9★', label: 'Average Rating', icon: '⭐' },
-                { value: 'CA', label: 'Country of Operation', icon: '🍁' },
-                { value: '1 Year', label: 'Product Warranty', icon: '🛡️' },
+                { value: '10,000+', label: 'Units Sold', icon: <Package size={24} className="mx-auto" /> },
+                { value: '4.9', label: 'Average Rating', icon: <Star size={24} className="mx-auto fill-[#1A1A1A]" /> },
+                { value: 'CA', label: 'Country of Operation', icon: <MapPin size={24} className="mx-auto" /> },
+                { value: '1 Year', label: 'Product Warranty', icon: <ShieldCheck size={24} className="mx-auto" /> },
               ].map(({ value, label, icon }) => (
                 <div key={label} className="bg-[#f8f8f8] rounded-2xl p-4 text-center">
                   <div className="text-2xl mb-1">{icon}</div>
@@ -210,7 +210,7 @@ export default function AboutPage() {
                 <div className="flex-1 p-4 flex flex-col justify-between">
                   <div>
                     <div className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full mb-2">
-                      ✓ Registered
+                      <CheckCircle2 size={12} className="inline mr-1 mb-0.5" /> Registered
                     </div>
                     <p className="text-xs text-gray-600 leading-relaxed mb-3">
                       The Grasshawk KLAW™ Mole Trap is registered under the <em>Industrial Designs Act</em> — protecting its unique design, registered jointly with Press Stamping Industries.
@@ -282,7 +282,7 @@ export default function AboutPage() {
                 <div className="flex-1 p-4 flex flex-col justify-between">
                   <div>
                     <div className="inline-flex items-center gap-1 bg-green-50 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full mb-2">
-                      ✓ Incorporated
+                      <CheckCircle2 size={12} className="inline mr-1 mb-0.5" /> Incorporated
                     </div>
                     <p className="text-xs text-gray-600 leading-relaxed mb-3">
                       Vibgyor Maple Inc. is officially incorporated under the <em>Canada Business Corporations Act</em> — a federally registered Canadian corporation.
@@ -322,9 +322,9 @@ export default function AboutPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { label: 'Head Operations', address: 'Vibgyor Maple Inc.\nCalgary, AB, Canada\nGST: 767786213RT0001', icon: '🍁' },
-              { label: 'Support & Operations', address: 'support.grasshawk@vibgormaple.com\n+1 639 590 9729', icon: '📞' },
-              { label: 'Manufacturing Unit', address: 'Manufacturing Partner\nIndia (Country of Origin)', icon: '🏭' },
+              { label: 'Head Operations', address: 'Vibgyor Maple Inc.\nCalgary, AB, Canada\nGST: 767786213RT0001', icon: <MapPin size={20} /> },
+              { label: 'Support & Operations', address: 'support.grasshawk@vibgormaple.com\n+1 639 590 9729', icon: <Phone size={20} /> },
+              { label: 'Manufacturing Unit', address: 'Manufacturing Partner\nIndia (Country of Origin)', icon: <Factory size={20} /> },
             ].map(({ label, address, icon }) => (
               <div key={label} className="bg-[#f8f8f8] rounded-2xl p-5">
                 <div className="text-xl mb-2">{icon}</div>

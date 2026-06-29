@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShoppingCart, X, ChevronRight } from 'lucide-react';
+import { ShoppingCart, X, ChevronRight, Check, Star, ShieldCheck, Sparkles } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 
 const specs = [
@@ -202,7 +202,7 @@ export default function ProductShowcase() {
               <div className="absolute top-4 left-4 bg-white shadow-lg rounded-xl px-3 py-2">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className={`text-xs ${i < 5 ? 'text-amber-400' : 'text-gray-200'}`}>★</span>
+                    <Star key={i} size={12} className={i < 5 ? 'fill-amber-400 text-amber-400' : 'fill-gray-200 text-gray-200'} />
                   ))}
                   <span className="text-xs font-bold text-[#1A1A1A] ml-1">4.8</span>
                 </div>
@@ -213,7 +213,7 @@ export default function ProductShowcase() {
             {/* Product info */}
             <div>
               <span className="inline-block bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full mb-4">
-                ✓ In Stock — Ships to all Canadian provinces
+                <Check size={14} className="inline mr-1 mb-0.5" /> In Stock — Ships to all Canadian provinces
               </span>
               <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] mb-3 leading-tight">
                 Grasshawk<br /><span className="text-[#C8102E]">KLAW</span> Mole Trap
@@ -247,7 +247,7 @@ export default function ProductShowcase() {
                     '1× Canadian Customer Support Fast-Pass',
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-2">
-                      <span className="text-[#C8102E] text-base">✦</span>
+                      <Sparkles size={16} className="text-[#C8102E] flex-shrink-0" />
                       <span className="font-semibold text-gray-700">{item}</span>
                     </li>
                   ))}
@@ -256,7 +256,7 @@ export default function ProductShowcase() {
 
               {/* 100% Satisfaction & Canadian Shipping Guarantee Box */}
               <div className="bg-red-50/50 border border-[#C8102E]/10 rounded-2xl p-6 mb-8 flex items-start gap-4">
-                <span className="text-2xl mt-0.5">🛡️</span>
+                <ShieldCheck size={28} className="text-[#C8102E] mt-0.5" />
                 <div>
                   <h4 className="font-bold text-[#1A1A1A] text-sm mb-1">Grasshawk Canadian Guarantee</h4>
                   <p className="text-gray-500 text-xs leading-relaxed">
@@ -331,7 +331,7 @@ export default function ProductShowcase() {
                       'One Year Home Use Limited Warranty',
                     ].map((f) => (
                       <li key={f} className="flex items-start gap-2">
-                        <span className="text-[#C8102E] font-bold mt-0.5">✓</span> {f}
+                        <Check size={16} className="text-[#C8102E] mt-0.5 flex-shrink-0" /> <span className="flex-1">{f}</span>
                       </li>
                     ))}
                   </ul>

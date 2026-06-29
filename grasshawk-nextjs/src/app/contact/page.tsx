@@ -107,7 +107,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-gray-400 text-xs uppercase font-bold tracking-wider mb-0.5">Location</p>
-                  <p className="font-semibold text-[#1A1A1A]">Alberta, Canada 🍁</p>
+                  <p className="font-semibold text-[#1A1A1A] flex items-center gap-1">Alberta, Canada <MapPin size={14} className="text-[#C8102E]" /></p>
                 </div>
                 <div>
                   <p className="text-gray-400 text-xs uppercase font-bold tracking-wider mb-0.5">Support Email</p>

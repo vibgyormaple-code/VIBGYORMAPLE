@@ -120,7 +120,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <p>© {new Date().getFullYear()} Vibgyor Maple Inc. All rights reserved. Grasshawk™ &amp; Grasshawk KLAW™</p>
           <div className="flex gap-4">
-            <span>Made in India | Marketed in Canada 🍁</span>
+            <span className="flex items-center gap-1">Made in India | Marketed in Canada <MapPin size={14} className="text-[#C8102E]" /></span>
             <span>·</span>
             <Link href="/about" className="hover:text-[#C8102E] transition-colors">Privacy Policy</Link>
           </div>

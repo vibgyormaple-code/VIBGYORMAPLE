@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Loader2, CheckCircle, Mail, Package, User, ChevronRight } from 'lucide-react';
+import { Loader2, CheckCircle, Mail, Package, User, ChevronRight, Check, MapPin, Lock } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import OTPModal from '@/components/ui/OTPModal';
 
@@ -162,7 +162,7 @@ export default function CheckoutPage() {
                     : 'bg-white border-gray-200 text-gray-400'
                 }`}
               >
-                {i < step ? '✓' : i + 1}
+                {i < step ? <Check size={16} /> : i + 1}
               </div>
               <span className={`text-xs font-semibold hidden sm:block ${i === step ? 'text-[#C8102E]' : 'text-gray-400'}`}>
                 {s}
@@ -300,7 +300,7 @@ export default function CheckoutPage() {
 
                 <div className="bg-red-50/60 border border-[#C8102E]/10 rounded-2xl p-6 mb-8">
                   <h3 className="font-bold text-[#1A1A1A] text-sm mb-2 flex items-center gap-2">
-                    📬 Direct Supplier Invoice &amp; Support
+                    <Mail size={16} /> Direct Supplier Invoice &amp; Support
                   </h3>
                   <p className="text-gray-600 text-xs leading-relaxed">
                     No payment gateway is integrated. Your finalized shopping cart request will be emailed directly to our headquarters. 
@@ -334,7 +334,7 @@ export default function CheckoutPage() {
             {step === 3 && (
               <div className="bg-white rounded-2xl p-10 text-center shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
                 <CheckCircle size={72} className="text-green-500 mx-auto mb-5" />
-                <h2 className="text-3xl font-black text-[#1A1A1A] mb-3">Order Request Sent! 🎉</h2>
+                <h2 className="text-3xl font-black text-[#1A1A1A] mb-3">Order Request Sent!</h2>
                 <p className="text-gray-500 mb-2">Thank you, <strong>{info.name}</strong>!</p>
                 {orderId && (
                   <p className="text-sm text-gray-400 mb-6">
@@ -385,8 +385,8 @@ export default function CheckoutPage() {
                   <span className="font-black text-[#C8102E] text-xl">${totalAmt.toFixed(2)} CAD</span>
                 </div>
                 <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-center gap-4 text-xs text-gray-400">
-                  <span>🔒 SSL Secured</span>
-                  <span>🍁 Ships to CA</span>
+                  <span className="flex items-center gap-1"><Lock size={12} /> SSL Secured</span>
+                  <span className="flex items-center gap-1"><MapPin size={12} /> Ships to CA</span>
                 </div>
               </div>
             </div>

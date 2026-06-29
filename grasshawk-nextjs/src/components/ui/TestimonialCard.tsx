@@ -1,6 +1,6 @@
 'use client';
 
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, CheckCircle2 } from 'lucide-react';
 
 interface TestimonialCardProps {
   name: string;
@@ -56,7 +56,7 @@ export default function TestimonialCard({
             <p className="font-semibold text-[#1A1A1A] text-sm">{name}</p>
             {verified && (
               <span className="text-[10px] text-green-600 font-medium bg-green-50 px-1.5 py-0.5 rounded-full">
-                ✓ Verified
+                <CheckCircle2 size={10} className="inline mr-0.5 mb-0.5" /> Verified
               </span>
             )}
           </div>
