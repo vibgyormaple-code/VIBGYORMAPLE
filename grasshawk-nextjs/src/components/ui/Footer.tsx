@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Mail, Globe, MapPin, ExternalLink, Share2, MessageCircle } from 'lucide-react';
+import { Phone, Mail, Globe, MapPin, MessageCircle } from 'lucide-react';
 
 
 const footerLinks = {

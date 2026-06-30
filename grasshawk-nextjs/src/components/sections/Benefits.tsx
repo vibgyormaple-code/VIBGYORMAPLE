@@ -1,7 +1,6 @@
 'use client';
 
 import BenefitCard from '@/components/ui/BenefitCard';
-import Image from 'next/image';
 
 const benefits = [
   {
