@@ -48,26 +48,7 @@ export default function CartPage() {
               <CartItem key={item.id} {...item} />
             ))}
 
-            {/* Shipping banner */}
-            {sub < 100 && (
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-center gap-3">
-                <Truck size={18} className="text-amber-600 flex-shrink-0" />
-                <div>
-                  <p className="text-sm font-semibold text-amber-800">
-                    Add ${(100 - sub).toFixed(2)} more for <strong>free shipping!</strong>
-                  </p>
-                  <div className="mt-1.5 bg-amber-200 rounded-full h-1.5">
-                    <div className="bg-amber-600 h-1.5 rounded-full transition-all" style={{ width: `${(sub / 100) * 100}%` }} />
-                  </div>
-                </div>
-              </div>
-            )}
-            {sub >= 100 && (
-              <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3">
-                <Truck size={18} className="text-green-600 flex-shrink-0" />
-                <p className="text-sm font-semibold text-green-800 flex items-center gap-1.5"><Rocket size={16} /> You&apos;ve unlocked <strong>free shipping!</strong></p>
-              </div>
-            )}
+            {/* Shipping banner removed because shipping is included */}
           </div>
 
           {/* Order summary */}
@@ -81,13 +62,13 @@ export default function CartPage() {
                   <span className="font-semibold">${sub.toFixed(2)} CAD</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">HST Tax (13%)</span>
-                  <span className="font-semibold">${taxAmt.toFixed(2)} CAD</span>
+                  <span className="text-gray-500">GST Tax</span>
+                  <span className="font-semibold text-xs text-gray-400 mt-0.5">Varies by City (TBD)</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Shipping</span>
                   <span className={`font-semibold ${shipAmt === 0 ? 'text-green-600' : ''}`}>
-                    {shipAmt === 0 ? 'FREE' : `$${shipAmt.toFixed(2)} CAD`}
+                    {shipAmt === 0 ? 'Included' : `$${shipAmt.toFixed(2)} CAD`}
                   </span>
                 </div>
               </div>

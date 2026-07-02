@@ -93,12 +93,12 @@ export async function sendOrderNotification(order: {
   await transporter.sendMail({
     from: `"Grasshawk KLAW" <${process.env.GMAIL_USER}>`,
     to: BUSINESS_EMAIL,
-    subject: `New Order #${order._id} — $${order.total.toFixed(2)} CAD`,
+    subject: `New Proforma Invoice Request #${order._id} — $${order.total.toFixed(2)} CAD (Excl. GST)`,
     html: `
       <div style="font-family:Inter,sans-serif;max-width:600px;margin:auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #eee;">
         <div style="background:#C8102E;padding:24px;text-align:center;">
-          <h1 style="color:#fff;margin:0;font-size:22px;">New Order Received</h1>
-          <p style="color:#ffd0d0;margin:4px 0 0;">Order #${order._id}</p>
+          <h1 style="color:#fff;margin:0;font-size:22px;">Proforma Invoice Request Received</h1>
+          <p style="color:#ffd0d0;margin:4px 0 0;">Request #${order._id}</p>
         </div>
         <div style="padding:32px;">
           <h3 style="color:#1a1a1a;margin-bottom:8px;">Customer Details</h3>
@@ -110,9 +110,9 @@ export async function sendOrderNotification(order: {
             <tbody>${itemRows}</tbody>
             <tfoot>
               <tr><td colspan="2" style="padding:8px;text-align:right;color:#555;">Subtotal</td><td style="padding:8px;text-align:right;">$${order.subtotal.toFixed(2)}</td></tr>
-              <tr><td colspan="2" style="padding:8px;text-align:right;color:#555;">Tax (HST 13%)</td><td style="padding:8px;text-align:right;">$${order.tax.toFixed(2)}</td></tr>
-              <tr><td colspan="2" style="padding:8px;text-align:right;color:#555;">Shipping</td><td style="padding:8px;text-align:right;">$${order.shipping === 0 ? 'FREE' : order.shipping.toFixed(2)}</td></tr>
-              <tr style="background:#C8102E;color:#fff;font-weight:700;"><td colspan="2" style="padding:10px;text-align:right;">Total</td><td style="padding:10px;text-align:right;">$${order.total.toFixed(2)} CAD</td></tr>
+              <tr><td colspan="2" style="padding:8px;text-align:right;color:#555;">GST (Varies by City)</td><td style="padding:8px;text-align:right;">TBD</td></tr>
+              <tr><td colspan="2" style="padding:8px;text-align:right;color:#555;">Shipping (Included)</td><td style="padding:8px;text-align:right;">INCLUDED</td></tr>
+              <tr style="background:#C8102E;color:#fff;font-weight:700;"><td colspan="2" style="padding:10px;text-align:right;">Total (Excl. GST)</td><td style="padding:10px;text-align:right;">$${order.total.toFixed(2)} CAD</td></tr>
             </tfoot>
           </table>
           <p style="margin-top:16px;color:#555;">Payment Method: <strong style="text-transform:uppercase;">${order.paymentMethod}</strong></p>
@@ -141,12 +141,12 @@ export async function sendOrderConfirmation(order: {
   await transporter.sendMail({
     from: `"Grasshawk KLAW" <${process.env.GMAIL_USER}>`,
     to: order.email,
-    subject: `Your Grasshawk KLAW Order Confirmation #${order._id}`,
+    subject: `Your Grasshawk KLAW Proforma Invoice Request #${order._id}`,
     html: `
       <div style="font-family:Inter,sans-serif;max-width:600px;margin:auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #eee;">
         <div style="background:#C8102E;padding:32px;text-align:center;">
           <h1 style="color:#fff;margin:0;font-size:26px;">Thank You, ${order.customerName}!</h1>
-          <p style="color:#ffd0d0;margin:8px 0 0;font-size:16px;">Your order has been confirmed.</p>
+          <p style="color:#ffd0d0;margin:8px 0 0;font-size:16px;">This is a Proforma Invoice, not a final invoice. GST will vary for different cities. Our team will contact you to coordinate shipping and complete your final invoice.</p>
         </div>
         <div style="padding:32px;">
           <p style="color:#555;">Order ID: <strong>#${order._id}</strong></p>
@@ -156,9 +156,9 @@ export async function sendOrderConfirmation(order: {
             <tbody>${itemRows}</tbody>
             <tfoot>
               <tr><td colspan="2" style="padding:8px;text-align:right;color:#555;">Subtotal</td><td style="padding:8px;text-align:right;">$${order.subtotal.toFixed(2)}</td></tr>
-              <tr><td colspan="2" style="padding:8px;text-align:right;color:#555;">Tax (HST 13%)</td><td style="padding:8px;text-align:right;">$${order.tax.toFixed(2)}</td></tr>
-              <tr><td colspan="2" style="padding:8px;text-align:right;color:#555;">Shipping</td><td style="padding:8px;text-align:right;">${order.shipping === 0 ? 'FREE' : '$' + order.shipping.toFixed(2)}</td></tr>
-              <tr style="background:#C8102E;color:#fff;font-weight:700;"><td colspan="2" style="padding:10px;text-align:right;">Total</td><td style="padding:10px;text-align:right;">$${order.total.toFixed(2)} CAD</td></tr>
+              <tr><td colspan="2" style="padding:8px;text-align:right;color:#555;">GST (Varies by City)</td><td style="padding:8px;text-align:right;">TBD</td></tr>
+              <tr><td colspan="2" style="padding:8px;text-align:right;color:#555;">Shipping (Included)</td><td style="padding:8px;text-align:right;">INCLUDED</td></tr>
+              <tr style="background:#C8102E;color:#fff;font-weight:700;"><td colspan="2" style="padding:10px;text-align:right;">Total (Excl. GST)</td><td style="padding:10px;text-align:right;">$${order.total.toFixed(2)} CAD</td></tr>
             </tfoot>
           </table>
           <div style="background:#f0fff0;border:1px solid #00aa44;border-radius:8px;padding:16px;margin-top:24px;">

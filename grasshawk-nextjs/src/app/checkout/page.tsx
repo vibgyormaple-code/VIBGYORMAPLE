@@ -300,11 +300,12 @@ export default function CheckoutPage() {
 
                 <div className="bg-red-50/60 border border-[#C8102E]/10 rounded-2xl p-6 mb-8">
                   <h3 className="font-bold text-[#1A1A1A] text-sm mb-2 flex items-center gap-2">
-                    <Mail size={16} /> Direct Supplier Invoice &amp; Support
+                    <Mail size={16} /> Direct Supplier Proforma Invoice &amp; Support
                   </h3>
                   <p className="text-gray-600 text-xs leading-relaxed">
                     No payment gateway is integrated. Your finalized shopping cart request will be emailed directly to our headquarters. 
-                    <strong> Vibgyor Maple Inc.</strong> (our supplier) will contact you directly via phone or email to coordinate shipping details and complete your invoice.
+                    <strong> This is a Proforma Invoice request, not a final invoice. GST will vary for different cities.</strong>
+                    <strong> Vibgyor Maple Inc.</strong> (our supplier) will contact you directly via phone or email to coordinate shipping details and complete your final invoice.
                   </p>
                 </div>
 
@@ -345,7 +346,7 @@ export default function CheckoutPage() {
                   <h3 className="font-black text-green-800 text-lg mb-2">Our team will reach you soon!</h3>
                   <p className="text-green-700 text-sm leading-relaxed">
                     We have successfully received your order request. A confirmation email with the summary has been sent to <strong>{info.email}</strong>. 
-                    Our sales team will contact you directly to arrange invoice details and shipping.
+                    Our sales team will contact you directly to arrange final invoice details (including city-specific GST) and shipping.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -377,8 +378,8 @@ export default function CheckoutPage() {
                 </div>
                 <div className="border-t border-gray-100 pt-4 space-y-2 text-sm">
                   <div className="flex justify-between"><span className="text-gray-500">Subtotal</span><span className="font-semibold">${sub.toFixed(2)}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-500">HST (13%)</span><span className="font-semibold">${taxAmt.toFixed(2)}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-500">Shipping</span><span className={`font-semibold ${shipAmt === 0 ? 'text-green-600' : ''}`}>{shipAmt === 0 ? 'FREE' : `$${shipAmt.toFixed(2)}`}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">GST</span><span className="font-semibold text-xs text-gray-400 mt-0.5">Varies by City (TBD)</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500">Shipping</span><span className={`font-semibold ${shipAmt === 0 ? 'text-green-600' : ''}`}>{shipAmt === 0 ? 'Included' : `$${shipAmt.toFixed(2)}`}</span></div>
                 </div>
                 <div className="border-t border-gray-100 mt-4 pt-4 flex justify-between items-center">
                   <span className="font-black text-[#1A1A1A]">Total</span>

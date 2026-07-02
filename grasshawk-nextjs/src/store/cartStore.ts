@@ -59,13 +59,11 @@ export const useCartStore = create<CartStore>()(
         get().items.reduce((sum, i) => sum + i.price * i.qty, 0),
 
       tax: () => {
-        const sub = get().subtotal();
-        return parseFloat((sub * 0.13).toFixed(2)); // 13% HST (Canada)
+        return 0; // GST is calculated later based on city
       },
 
       shipping: () => {
-        const sub = get().subtotal();
-        return sub >= 100 ? 0 : 9.99; // Free shipping over $100
+        return 0; // Includes Shipping
       },
 
       total: () => {

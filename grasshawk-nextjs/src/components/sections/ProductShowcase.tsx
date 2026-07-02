@@ -7,7 +7,7 @@ import { ShoppingCart, X, ChevronRight, Check, Star, ShieldCheck, Sparkles, MapP
 import { useCartStore } from '@/store/cartStore';
 
 const specs = [
-  { label: 'Price', value: '$29.00 CAD' },
+  { label: 'Price', value: '$35.35 CAD + GST (Includes Shipping)' },
   { label: 'Weight', value: '2.8 lbs' },
   { label: 'Dimensions', value: '5.91" × 5.12" × 11.81"' },
   { label: 'Material', value: 'Heavy-duty galvanized steel' },
@@ -84,7 +84,7 @@ export default function ProductShowcase() {
   const product = {
     id: 'grasshawk-klaw-001',
     name: 'Grasshawk KLAW Mole Trap',
-    price: 29.0,
+    price: 35.35,
     image: '/assets/new_moletrap.jpg',
   };
 
@@ -261,7 +261,7 @@ export default function ProductShowcase() {
                 <div>
                   <h4 className="font-bold text-[#1A1A1A] text-sm mb-1">Grasshawk Canadian Guarantee</h4>
                   <p className="text-gray-500 text-xs leading-relaxed">
-                    Operated by VIBGYOR Maple Inc. in Alberta. Ships to all Canadian provinces within 2–4 business days. Free shipping on all orders over $100 CAD.
+                    Operated by VIBGYOR Maple Inc. in Alberta. Ships to all Canadian provinces within 2–4 business days. Shipping is included.
                   </p>
                 </div>
               </div>
@@ -359,7 +359,7 @@ export default function ProductShowcase() {
                   className="w-full bg-[#C8102E] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#a50d26] transition-all"
                 >
                   <ShoppingCart size={18} />
-                  Add to Cart — $29.00 CAD
+                  Add to Cart — $35.35 CAD + GST
                 </button>
               </div>
             </div>

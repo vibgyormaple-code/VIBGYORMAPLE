@@ -75,11 +75,14 @@ export default function ProductCard({
         )}
 
         <div className="flex items-center justify-between mt-3">
-          <div>
-            <span className="text-2xl font-black text-[#C8102E]">
-              ${price.toFixed(2)}
-            </span>
-            <span className="text-xs text-gray-400 ml-1">CAD</span>
+          <div className="flex flex-col">
+            <div>
+              <span className="text-2xl font-black text-[#C8102E]">
+                ${price.toFixed(2)}
+              </span>
+              <span className="text-xs text-gray-400 ml-1">CAD</span>
+            </div>
+            <span className="text-[10px] text-gray-400 mt-0.5">+ GST (Varies by City)</span>
           </div>
 
           <button

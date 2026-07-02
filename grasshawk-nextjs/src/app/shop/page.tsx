@@ -9,7 +9,7 @@ import { useCartStore } from '@/store/cartStore';
 const product = {
   id: 'grasshawk-klaw-001',
   name: 'Grasshawk KLAW Mole Trap',
-  price: 29.0,
+  price: 35.35,
   image: '/assets/new_moletrap.jpg',
   rating: 4.8,
   reviews: 127,
@@ -18,7 +18,7 @@ const product = {
 };
 
 const specs = [
-  { label: 'Price', value: '$29.00 CAD' },
+  { label: 'Price', value: '$35.35 CAD + GST (Includes Shipping)' },
   { label: 'Weight', value: '2.8 lbs (1.27 kg)' },
   { label: 'Dimensions', value: '5.91" × 5.12" × 11.81"' },
   { label: 'Material', value: 'Heavy-duty galvanized steel' },
@@ -249,11 +249,11 @@ export default function ShopPage() {
 
               {/* Price */}
               <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-4xl font-black text-[#C8102E]">$29.00</span>
+                <span className="text-4xl font-black text-[#C8102E]">$35.35</span>
                 <span className="text-lg text-gray-400">CAD</span>
               </div>
               <p className="text-xs text-gray-400 mb-6">
-                + Shipping ($9.99) · <strong className="text-green-600">Free shipping on orders over $100</strong>
+                + GST (Varies by City) · <strong className="text-green-600">Shipping Included</strong>
               </p>
 
               {/* Stock badge */}
@@ -372,13 +372,12 @@ export default function ShopPage() {
               {selectedTab === 'shipping' && (
                 <div className="space-y-4 text-sm text-gray-600 max-w-lg">
                   <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                    <p className="font-bold text-green-700 mb-1 flex items-center gap-1.5"><Rocket size={16} /> Free Shipping on Orders Over $100</p>
-                    <p>Order 4+ units to qualify for free shipping to any Canadian province.</p>
+                    <p className="font-bold text-green-700 mb-1 flex items-center gap-1.5"><Rocket size={16} /> Shipping is Included</p>
+                    <p>We offer included shipping to any Canadian province.</p>
                   </div>
                   <div className="space-y-2">
                     {[
-                      ['Standard Shipping', '$9.99 CAD · 5–8 business days'],
-                      ['Expedited Shipping', '$19.99 CAD · 2–3 business days'],
+                      ['Standard Shipping', 'Included · 5–8 business days'],
                       ['Delivery Areas', 'All Canadian provinces and territories'],
                       ['Order Processing', 'Ships within 1–2 business days'],
                     ].map(([label, value]) => (
